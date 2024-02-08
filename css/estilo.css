@@ -1,0 +1,15 @@
+.caixa-quiz{
+    background-color: rgb(0, 60, 255);
+}
+
+.op-a, .op-b, .op-c{
+    background-color: rgb(131, 160, 255);
+}
+
+.resposta{
+    background-color: rgb(0, 255, 0);
+}
+
+.botao-responder{
+    background-color: aquamarine;
+}

@@ -29,7 +29,8 @@ header{
 }
 
 header,.cabecalho{
-    background-color: rgb(63, 63, 128);
+    background-color: rgb(63, 63, 128);   
+    justify-content: center;
 }
 
 header,.p{
@@ -40,13 +41,15 @@ header,.p{
     background-color: rgb(0, 60, 255);
     width: 50%;
     margin: auto auto;
-    padding: 1%;
-    border-color: black;
-    
+    padding: 1%;    
 }
 
 .op-a, .op-b, .op-c{
     background-color: rgb(131, 160, 255);
+}
+
+.certo-errado{
+    background-color: rgb(64, 19, 107);
 }
 
 .resposta{
@@ -55,4 +58,6 @@ header,.p{
 
 .botao-responder{
     background-color: aquamarine;
+    display: flex;
+    justify-content: center;
 }

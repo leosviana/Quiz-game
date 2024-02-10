@@ -1,3 +1,7 @@
+/*
+  [MARGIN [BORDER [PADDING [CONTENT] PADDING] BORDER] MARGIN]
+*/
+
 *{
     box-sizing: border-box;
 }
@@ -24,7 +28,7 @@ header{
     justify-content: center; 
     background-color: rgb(224, 190, 255);
     width: 50%;
-    margin: auto auto;
+    margin: auto auto; /*Margem centralizada automatica*/
     padding: 1%;    
 }
 
@@ -63,10 +67,28 @@ header{
     margin: 5px 0px 5px 0px;
 }
 
-.resposta{
+.caixa-resposta{
     background-color: rgb(0, 255, 0);
     border: 1px solid black;
     margin: 2px 0px 2px 0px;
+    display: flex;    
+    width: 100%;
+    height: auto; /* Altura automatica da caixa de resposta */    
+}
+
+.img-resposta{
+    border: 10px solid #006c97;
+    border-radius: 10px;
+    width: 100%;
+    /*height: auto;  */  
+}
+
+.resposta{
+    border: 1px solid red;
+    padding: 0px 10px 10px 10px;
+    width: 100%;
+    overflow: auto;
+    /*overflow-y: hidden; /*auto / scroll / hidden / visible  */
 }
 
 .botao-responder{
@@ -74,5 +96,10 @@ header{
     display: flex;
     justify-content: center;
     border: 1px solid black; 
-    margin: 5px 0px 5px 0px;   
+    margin: 5px 0px 5px 0px;
+    width: 100%;      
+}
+
+.btnResponder{
+    width: 30%;    
 }

@@ -4,17 +4,21 @@
 
 function opcoes(){
     op = document.getElementsByClassName("op");
+    //opA = op.getAttibute("id");
     opA = document.getElementById("op-a");
+
+    //var item = document.getElementById(id); //Capturando o campo de índice da tarefa
+    //var classe = item.getAttribute('class'); //Capturando o atributo "class", que é o nome da classe
     //opB = document.getElementById("op-b").className;
     //opC = document.getElementById("op-c").className;
-    if (op == opA ){        
-        console.log("opcao A");
-        //console.log(op[0]);
-        //console.log(op[1]);
-        //console.log(op[2]);
-    }
-    
-    
+    if (op == opA.id ){
+        console.log(op + "teste A" + opA);
+        document.getElementById("text").innerHTML = op;
+        document.getElementById("text2").innerHTML = opA;
 
+    }else{
+        console.log("teste B")
+        console.log(op.id + "teste B" + opA.id);
+    }
 
 }

@@ -53,10 +53,29 @@ header{
     border-radius: 10px;
 }
 
+.caixa-pergunta{
+    display: flex;
+    flex-wrap: nowrap;
+    /*border: 1px solid black;*/
+    padding-bottom: 10px;
+}
+
+.id-pergunta{
+    /*border: 1px solid black;*/
+    padding: 5px;
+    border-radius: 50px;
+    background-color: #006c97;
+    color: white;        
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
 .pergunta{
     /*background-color: rgb(241, 250, 122);*/
     /*border: 1px solid black;*/
-    padding-bottom: 10px;
+    width: 95%; 
+    margin: 0px 0px 0px 10px;
 }
 
 .op-a, .op-b, .op-c{

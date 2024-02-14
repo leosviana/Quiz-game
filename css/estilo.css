@@ -80,7 +80,7 @@ header{
     /*border: 1px solid black;*/
     margin: 2px 0px 2px 0px;
     display: flex;
-    flex-wrap: nowrap;   
+    flex-wrap: nowrap;  /* nowrap / wrap?? */
     height: auto; /* Altura automatica da caixa de resposta */  
     padding: 1%;       
 }

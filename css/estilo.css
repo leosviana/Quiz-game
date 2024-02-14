@@ -3,7 +3,7 @@
 */
 
 *{
-    box-sizing: border-box;
+    box-sizing: border-box; /* Utiliza toda a página sem "tranbordar" para direita */
 }
 
 body{
@@ -61,41 +61,49 @@ header{
 
 .op-a, .op-b, .op-c{
     background-color: rgb(131, 160, 255);
-    border-style: solid;
-    border: 1px solid black;
+    border: 1px solid #006c97;
+    border-radius: 5px;
     padding: 5px;
-    margin: 2px 0px 2px 0px;
+    margin: 2px 0px 5px 0px;
+    cursor: pointer;
 }
 
 .certo-errado{
     background-color: rgb(102, 255, 0);
     /*border: 1px solid black;*/
+    padding: 5px;
     margin: 5px 0px 5px 0px;
 }
 
 .caixa-resposta{
     /*background-color: rgb(0, 255, 0);*/
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin: 2px 0px 2px 0px;
-    display: flex;  
-    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;   
     height: auto; /* Altura automatica da caixa de resposta */  
-    padding: 1%; 
+    padding: 1%;       
 }
 
 .img-resposta{
     border: 5px solid #006c97;
     border-radius: 10px;
-    width: 70%;
-    /*height: auto; */  
+    width: 100%;
+    height: auto;
 }
 
 .resposta{
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     padding: 0px 10px 10px 10px;
-    width: 100%;
-    overflow: auto;
-    /*overflow-y: hidden; /*auto / scroll / hidden / visible  */
+    width: 200%;
+    overflow: auto; /*Texto interior: expandir ou retrair automaticamente */
+    /*overflow-y: hidden; /*Texto interior eixo vertical(y): auto / scroll / hidden / visible  */
+}
+
+@media (max-width: 800px){ /* Ajustar automaticamente quando o tamanho da tela for 800px ou menor */
+    .img-resposta, .resposta {
+      flex: 100%;
+    }
 }
 
 .caixa-botao{
@@ -105,7 +113,7 @@ header{
     justify-content: center;
     margin: 5px 0px 0px 0px;
     width: 100%;
-    height: 40px;   
+    height: 40px; 
 }
 
 .botao-responder{
@@ -120,9 +128,11 @@ header{
     font-size: 1rem;
     /*box-shadow: 2px 2px 4px black; /* Sombra na div: Direita / Embaixo / Sombra / Cor */
     transition-duration: 0.4s; /* Tempo de transição ao passar o mouse */
+    cursor: pointer;
 }
 
 .botao-responder:hover{ /* Ao passar o mouse */
     background-color: #006c97; /* Muda a cor do botão */
     color: white; /* Muda a cor do texto */
+    cursor: pointer;
 }

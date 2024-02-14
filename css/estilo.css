@@ -78,13 +78,16 @@ header{
     margin: 0px 0px 0px 10px;
 }
 
-.op-a, .op-b, .op-c{
+#op-a, #op-b, #op-c{
     background-color: rgb(131, 160, 255);
     border: 1px solid #006c97;
     border-radius: 5px;
     padding: 5px;
+    width: 100%;
+    text-align: left;
     margin: 2px 0px 5px 0px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .certo-errado{

@@ -17,7 +17,7 @@
             </p>
         </div>
     </header>
-    <main id="areaQuiz">
+    <body id="areaQuiz">
         <div class="caixa-quiz">
             <div class="caixa-pergunta">
                 <div class="id-pergunta">
@@ -26,19 +26,16 @@
                 <div class="pergunta">
                     Pergunta asd asdas asd asd asdasdas asdasd asd asd asd asd asd asd asd asd asd asasdas asdas asd asd asdasd asd asd asd asd asd asd asd asd asd asd asd asd
                 </div>
-            </div>            
-            <div class="op-a">
-                <input type="radio" name="opcoes" id="op1" value="op1">
-                <label for="op1">Opção1</label><br>
             </div>
-            <div class="op-b">
-                <input type="radio" name="opcoes" id="op2" value="op2">
-                <label for="op2">Opção2</label><br>
+            <div>
+                <button class="op" id="op-a" onclick="opcoes()">Opcao A</button>
             </div>
-            <div class="op-c">
-                <input type="radio" name="opcoes" id="op3" value="op3">
-                <label for="op3">Opção3</label>
+            <div>
+                <button class="op" id="op-b" onclick="opcoes()">Opcao B</button>
             </div>
+            <div>
+                <button class="op" id="op-c" onclick="opcoes()">Opcao C</button>
+            </div>      
 
             <div class="certo-errado">
                 Você acertou!
@@ -58,11 +55,8 @@
             <div class="caixa-botao">
                 <button class="botao-responder">Responder</button>
             </div>
-
         </div>
+    </body>
 
-    </main>
-<body>
-    
-</body>
+    <script src="/js/opcoes.js"></script>
 </html>

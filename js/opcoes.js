@@ -3,49 +3,31 @@
 //3 - Marcar as outras opções com a cor azul
 
 
+function opcoes() {
+    var opa = document.getElementById("op-a");
+    
 
-document.querySelectorAll('.op').forEach(function(opcoes){
-    opcoes.addEventListener('onclick', function(){
-        var idBotao = this.id;
-
-        switch(idBotao){
-            case 'op-a':
-                console("Teste A");
+    // Adiciona um evento de clique a todos os elementos com a classe "op"
+    document.querySelectorAll('.op').forEach(function(botao) {
+      botao.addEventListener('click', function() {
+        // Obtém o ID do botão clicado
+        var idDoBotao = this.id;
+  
+        // Executa ação com base no ID do botão
+        switch (idDoBotao) {
+          case 'op-a':
+            console.log("Teste a" + opa);
+            
             break;
-            case 'op-b':
-                console("Teste B");
+          case 'op-b':
+            console.log("Teste b");
             break;
-            default:
-                console("outro");
+          case 'op-c':
+            console.log("Teste c");
+            break;
+          default:
+            console.log("Botão não reconhecido");
         }
-    })
-})
-
-
-
-/*function opcoes(){
-    idBotao = this.id;
-    op = document.querySelector(".op");
-    //opA = document.getElementById("op-a");     
-    switch(idBotao){
-        case 'op-a':
-            console.log("Opcao A");
-        break;
-        default:
-            console.log("outro");
-    }
-
-
-
-    //var item = document.getElementById(id); //Capturando o campo de índice da tarefa
-    //var classe = item.getAttribute('class'); //Capturando o atributo "class", que é o nome da classe
-   
-    /*if (op.classList && opA){
-        console.log(" teste A " + opA.id);
-    }else if (op.classList && opB){
-        console.log(" teste B" + opB.id);
-    }else{
-        console.log(" outro ");
-    }*/
-
- //}
+      });
+    });
+  }

@@ -4,8 +4,9 @@
 
 
 function opcoes() {
-    var opa = document.getElementById("op-a");
-    
+    var opA = document.getElementById("op-a");
+    var opB = document.getElementById("op-b");
+    var opC = document.getElementById("op-c");    
 
     // Adiciona um evento de clique a todos os elementos com a classe "op"
     document.querySelectorAll('.op').forEach(function(botao) {
@@ -16,14 +17,24 @@ function opcoes() {
         // Executa ação com base no ID do botão
         switch (idDoBotao) {
           case 'op-a':
-            console.log("Teste a" + opa);
+            console.log("Teste a" + opA.id);
+            var status = "marcado";
+            opA.style.backgroundColor = "green";
+            opB.style.backgroundColor = "blue";
+            opC.style.backgroundColor = "blue";
             
             break;
           case 'op-b':
             console.log("Teste b");
+            opA.style.backgroundColor = "blue";
+            opB.style.backgroundColor = "green";
+            opC.style.backgroundColor = "blue";
             break;
           case 'op-c':
             console.log("Teste c");
+            opA.style.backgroundColor = "blue";
+            opB.style.backgroundColor = "blue";
+            opC.style.backgroundColor = "green";
             break;
           default:
             console.log("Botão não reconhecido");

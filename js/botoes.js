@@ -61,11 +61,21 @@ function btResponder(){
 
   if (statusOp == "desmarcado"){
     var msg = document.getElementById("mensagem").innerHTML = "Marque uma das opções.";
-    document.removeChild("msg");
+    //document.removeChild("msg");
     console.log("status esta desmarcado");
   }else{    
     console.log("status esta marcado");
   }
+
+  //escrever em atributos id:
+  //https://www.w3schools.com/jsref/prop_html_innerhtml.asp
+
+  //esconder atributos:
+  //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_hide_show
+
+  //remover atributos:
+  //https://www.w3schools.com/js/js_htmldom_document.asp
+
 
 
 

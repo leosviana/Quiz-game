@@ -28,19 +28,19 @@
                 </div>
             </div>
             <div>
-                <button class="op" id="op-a" name="op-a" onclick="opcoes()">Opcao A</button>
+                <button class="op" id="op-a" onclick="btOpcoes()">Opcao A</button>
             </div>
             <div>
-                <button class="op" id="op-b" name="op-b" onclick="opcoes()">Opcao B</button>
+                <button class="op" id="op-b" onclick="btOpcoes()">Opcao B</button>
             </div>
             <div>
-                <button class="op" id="op-c" name="op-c" onclick="opcoes()">Opcao C</button>
+                <button class="op" id="op-c" onclick="btOpcoes()">Opcao C</button>
             </div>  
             <p id=text></p>    
             <p id=text2></p> 
 
-            <div class="certo-errado">
-                Você acertou!
+            <div class="mensagem">
+                <p id="mensagem">Você acertou!</p>
             </div>
             <div class="caixa-resposta">
                 <div>
@@ -55,10 +55,10 @@
                 </div>
             </div>
             <div class="caixa-botao">
-                <button class="botao-responder">Responder</button>
+                <button class="botao-responder" id="responder" onclick="btResponder()">Responder</button>
             </div>
         </div>
     </body>
 
-    <script src="/js/opcoes.js"></script>
+    <script src="/js/botoes.js"></script>
 </html>

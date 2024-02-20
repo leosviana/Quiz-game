@@ -1,13 +1,15 @@
+
+// ###################### BOTÃO DE OPÇÕES ######################
 //1 - Quando selecionar uma opção, dar uma descrição de “marcado” 
 //2 - Ajustar para a cor de verde
 //3 - Marcar as outras opções com a cor azul
+var statusOp = "desmarcado";
 
-
-function opcoes() {
+function btOpcoes(){
     var opA = document.getElementById("op-a"); //Opção A
     var opB = document.getElementById("op-b"); //Opção B
     var opC = document.getElementById("op-c"); //Opção C
-    var status = "desmarcado"; 
+
 
     // Adiciona um evento de clique a todos os elementos com a classe "op"
     document.querySelectorAll('.op').forEach(function(botao){
@@ -19,23 +21,23 @@ function opcoes() {
             opA.style.backgroundColor = "green";
             opB.style.backgroundColor = "blue";
             opC.style.backgroundColor = "blue";
-            var status = "marcado";
-            console.log("Teste a -> " + status);            
+            statusOp = "marcado";
+            console.log("Teste a -> " + statusOp);            
             
             break;
           case 'op-b': //Caso clique no botão da opção B
             opA.style.backgroundColor = "blue";
             opB.style.backgroundColor = "green";
             opC.style.backgroundColor = "blue";
-            var status = "marcado";
-            console.log("Teste b -> " + status);
+            statusOp = "marcado";
+            console.log("Teste b -> " + statusOp);
             break;
           case 'op-c': //Caso clique no botão da opção C
             opA.style.backgroundColor = "blue";
             opB.style.backgroundColor = "blue";
             opC.style.backgroundColor = "green";
-            var status = "marcado";
-            console.log("Teste c -> " + status);
+            statusOp = "marcado";
+            console.log("Teste c -> " + statusOp);
             break;
           default:
             console.log("Botão não reconhecido");
@@ -43,3 +45,34 @@ function opcoes() {
       });
     });
   }
+
+// ###################### BOTÃO DE RESPOSTA ######################
+//1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
+//2 - Inserir um contador do numero da pergunta;
+//3 - Ao clicar no botão “responder”, precisa armazenar qual opção foi selecionada (a, b ou c);
+//4 - Verificar se a opção selecionada é igual a opção correta da pergunta;
+//5 - Se sim, exibir que o usuário acertou a resposta;
+//6 - Mostrar a imagem e a resposta ao usuário;
+//7 - Ocultar o botão “responder”;
+//8 - Mostrar o botão “Próximo” (Próxima pergunta);
+
+function btResponder(){
+  var responder = document.getElementById("responder");
+
+  if (statusOp == "desmarcado"){
+    var msg = document.getElementById("mensagem").innerHTML = "Marque uma das opções.";
+    document.removeChild("msg");
+    console.log("status esta desmarcado");
+  }else{    
+    console.log("status esta marcado");
+  }
+
+
+
+
+}
+
+
+
+
+

@@ -90,10 +90,10 @@ header{
     font-size: 16px;
 }
 
-.certo-errado{
+.mensagem{
     background-color: rgb(102, 255, 0);
     /*border: 1px solid black;*/
-    padding: 5px;
+    padding: 2px;
     margin: 5px 0px 5px 0px;
 }
 

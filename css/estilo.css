@@ -15,6 +15,11 @@ body{
     background-size: cover;
 }
 
+p{
+    padding: 2px;  
+    margin: 0px;
+}
+
 h1{
     text-align: center;
     font-size: 2rem;
@@ -54,11 +59,6 @@ header{
     border-radius: 10px;
 }
 
-.id-quiz > p{
-    padding: 5px;  
-    margin: 0px;
-}
-
 .caixa-quiz{
     background-color: rgb(227, 234, 255);
     /* border: 1px solid black; */
@@ -89,13 +89,8 @@ header{
 .pergunta{
     /*background-color: rgb(241, 250, 122);*/
     /*border: 1px solid black;*/
-    width: 95%; 
+    width: 95%;
     margin: 0px 0px 0px 10px;
-}
-
-.id-pergunta > p{
-    padding: 2px;  
-    margin: 0px;
 }
 
 #op-a, #op-b, #op-c{

@@ -93,7 +93,7 @@ header{
     margin: 0px 0px 0px 10px;
 }
 
-#op-a, #op-b, #op-c{
+.op{
     background-color: rgb(131, 160, 255);
     border: 1px solid #006c97;
     border-radius: 5px;

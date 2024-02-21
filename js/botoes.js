@@ -12,14 +12,15 @@
 }*/
 
 //OBJETO TESTE
-/*const pergunta1 = new Quiz( //Criando objeto Quiz - Pergunta 1
-    "Pergunta1 - Qual...", //Pergunta
-    "Opção A", //Opção A
-    "Opção B", //Opção B
-    "Opção C", //Opção C
-    "Opção B", //Opção Correta
-    "Resposta..."); //Resposta
-*/
+const pergunta1 = { //Criando objeto Quiz - Pergunta 1
+    pergunta: "Pergunta1 - Qual...", //Pergunta
+    opa: "Opção A",                  //Opção A
+    opb: "Opção B",                  //Opção B
+    opc: "Opção C",                  //Opção C
+    opcorreta: "Opção B",            //Opção Correta
+    resposta: "Resposta...",         //Resposta
+}
+
 
 // ###################### BOTÃO DE OPÇÕES ######################
 //1 - Quando selecionar uma opção, dar uma descrição de “marcado” 

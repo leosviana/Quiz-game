@@ -44,6 +44,21 @@ header{
     padding: 0px 10px 0px 10px;
 }
 
+.id-quiz{
+    background-color: rgb(229, 255, 0);
+    border: 1px solid yellow;
+    display: flex;
+    flex-wrap: nowrap;
+    /*padding-bottom: 0px;*/
+    margin: 0px 0px 10px 0px;
+    border-radius: 10px;
+}
+
+.id-quiz > p{
+    padding: 2px;  
+    margin: 0px;
+}
+
 .caixa-quiz{
     background-color: rgb(227, 234, 255);
     /* border: 1px solid black; */
@@ -76,6 +91,11 @@ header{
     /*border: 1px solid black;*/
     width: 95%; 
     margin: 0px 0px 0px 10px;
+}
+
+.id-pergunta > p{
+    padding: 2px;  
+    margin: 0px;
 }
 
 #op-a, #op-b, #op-c{

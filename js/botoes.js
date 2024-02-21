@@ -8,14 +8,16 @@ var statusOpA = "desmarcado";
 var statusOpB = "desmarcado";
 var statusOpC = "desmarcado";
 
-function btOpcoes(){
+//function btOpcoes(){ //Não foi necessário incluir função do botão 
     var opA = document.getElementById("op-a"); //Opção A
     var opB = document.getElementById("op-b"); //Opção B
     var opC = document.getElementById("op-c"); //Opção C
+    var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + 1; //Número do quiz
+    var idPergunta = document.getElementById("id-pergunta").innerHTML = 1; //Número da pergunta
 
     // Adiciona um evento de clique a todos os elementos com a classe "op"
     document.querySelectorAll('.op').forEach(function(botao){
-      botao.addEventListener('click', function() {        
+      botao.addEventListener('click', function(){        
         var idDoBotao = this.id; // Obtém o ID do botão clicado
           
         switch (idDoBotao){ // Executa ação com base no ID do botão
@@ -57,7 +59,7 @@ function btOpcoes(){
         }
       });
     });
-  }
+  //}
 
 // ###################### BOTÃO DE RESPOSTA ######################
 //1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
@@ -78,6 +80,9 @@ function btResponder(){
     console.log("status esta desmarcado");
   }else{    
     console.log("status esta marcado");
+    console.log("ID QUIZ: " + idQuiz);
+    console.log("ID PERGUNTA: " + idPergunta);
+    idQuiz = +1;
   }
 
   //escrever em atributos id:

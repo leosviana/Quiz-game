@@ -12,30 +12,49 @@
 }*/
 
 //OBJETO TESTE
-const pergunta1 = { //Criando objeto Quiz - Pergunta 1
-    pergunta: "Pergunta1 - Qual...", //Pergunta
-    opa: "Opção A",                  //Opção A
-    opb: "Opção B",                  //Opção B
-    opc: "Opção C",                  //Opção C
-    opcorreta: "Opção B",            //Opção Correta
-    resposta: "Resposta...",         //Resposta
+const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
+    numQuiz: 1,
+    numPergunta: 1,
+    pergunta: "Qual é tarara...", //Pergunta
+    opa: "Opção A",               //Opção A
+    opb: "Opção B",               //Opção B
+    opc: "Opção C",               //Opção C
+    opcorreta: "Opção B",         //Opção Correta
+    resposta: "Resposta...",      //Resposta
 }
-
 
 // ###################### BOTÃO DE OPÇÕES ######################
 //1 - Quando selecionar uma opção, dar uma descrição de “marcado” 
 //2 - Ajustar para a cor de verde
 //3 - Marcar as outras opções com a cor azul
 
+//QUIZ
+var caixaQuiz = document.getElementById("caixa-quiz");
+var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + conhecimentosGerais.numQuiz; //Número do quiz
+
+//PERGUNTA
+var idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais.numPergunta; //Número da pergunta
+var pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais.pergunta;
+
+//OPÇÕES
 var statusOpA = "desmarcado"; //Iniciar status das opções como desmarcada
 var statusOpB = "desmarcado"; // --
 var statusOpC = "desmarcado"; // --
-var opA = document.getElementById("op-a"); //Opção A
-var opB = document.getElementById("op-b"); //Opção B
-var opC = document.getElementById("op-c"); //Opção C
-var contadorQuiz = 1;
-var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + contadorQuiz; //Número do quiz
-var idPergunta = document.getElementById("id-pergunta").innerHTML = 1; //Número da pergunta
+var caixaOpcoes = document.getElementById("caixa-opcoes");
+var opA = document.getElementById("op-a"); //Declarando elemento HTML no JS -> opção A
+opA.innerHTML = conhecimentosGerais.opa;   //Conteudo da opção A
+var opB = document.getElementById("op-b"); //Declarando elemento HTML no JS -> Opção B
+opB.innerHTML = conhecimentosGerais.opb;   //Conteudo da opção B
+var opC = document.getElementById("op-c"); //Declarando elemento HTML no JS -> Opção C
+opC.innerHTML = conhecimentosGerais.opc;   //Conteudo da opção C
+var opCorreta = conhecimentosGerais.opcorreta; //Opção Correta
+
+//MENSAGEM
+var msg = document.getElementById("mensagem");
+var novaMensagem;
+
+//RESPOSTA
+
 
 // Adiciona um evento de clique a todos os elementos com a classe "op"
 document.querySelectorAll('.op').forEach(function(botao){
@@ -43,7 +62,7 @@ document.querySelectorAll('.op').forEach(function(botao){
     var idDoBotao = this.id; // Obtém o ID do botão clicado
       
     switch (idDoBotao){ // Executa ação com base no ID do botão
-      case 'op-a': //Caso clique no botão da opção A            
+      case 'op-a': //Caso clique no botão da opção A             
         opA.style.backgroundColor = "green";
         opB.style.backgroundColor = "blue";
         opC.style.backgroundColor = "blue";
@@ -79,6 +98,13 @@ document.querySelectorAll('.op').forEach(function(botao){
       default:
         console.log("Botão não reconhecido");
     }
+    /*if ((msg == "") || (msg == null) || (msg == undefined)){
+      //msg.display = "none";
+
+    }else{*/
+      caixaQuiz.removeChild(msg.firstChild); //Remove a mensagem da tela
+    //}
+    
   });
 });
 
@@ -103,25 +129,39 @@ function btResponder(){ //Botão Responder
   var responder = document.getElementById("responder");
 
   //Verifica se uma das opções foram selecionadas
-  if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){
-    var msg = document.getElementById("mensagem").innerHTML = "Marque uma das opções.";
+  if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){    
+    //if (novaMensagem == ""){
+    novaMensagem = document.createElement("div");
+    novaMensagem.id = "mensagem";
+    novaMensagem.className = "mensagem";
+    novaMensagem.innerHTML = "Marque uma das opções.";
+    caixaQuiz.appendChild(novaMensagem);
+    caixaOpcoes.insertAdjacentElement('afterend',novaMensagem);
+    //}else{
+      //caixaOpcoes.removeChild("novaMensagem");
+    //}    
+    //msg.innerHTML = "Marque uma das opções.";
     //document.removeChild("msg");
-    console.log("status esta desmarcado");
+    //console.log("status esta desmarcado");
   }else{ //Se uma das opções estiver selecionada, então:
-  //3.1 - Esconder o botão Responder”;
-  //3.2 - Mostrar o botão “Próximo” (Próxima pergunta);
-  //3.3 - Precisa armazenar qual opção foi selecionada (a, b ou c);
-  //3.4 - Verificar se a opção selecionada é igual a opção correta da pergunta;
-  //3.5 - Se sim, exibir que o usuário acertou a resposta;
-  //3.6 - Se não, exibir que o usuário errou a resposta;
-    //3.6.1 - Mudar cor da opção selecionada para vermelha;
-    //3.6.2 - Mudar cor da opção correta para verde;
-    //3.6.3 - A opção que sobrar deixa de azul;
-  //3.7 - Mostrar a imagem e a resposta ao usuário;
+//3.1.3 - Ao selecionar opção, excluir mensagem;
+ 
+  
+
+//3.2 - Esconder o botão Responder”;
+//3.3 - Mostrar o botão “Próximo” (Próxima pergunta);
+//3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);
+//3.5 - Verificar se a opção selecionada é igual a opção correta da pergunta;
+//3.6 - Se sim, exibir que o usuário acertou a resposta;
+//3.7 - Se não, exibir que o usuário errou a resposta;
+//3.7.1 - Mudar cor da opção selecionada para vermelha;
+//3.7.2 - Mudar cor da opção correta para verde;
+//3.7.3 - A opção que sobrar deixa de azul;
+//3.8 - Mostrar a imagem e a resposta ao usuário;
     console.log("status esta marcado");
-    console.log("ID QUIZ: " + contadorQuiz);
-    console.log("ID PERGUNTA: " + idPergunta);
-    ++contadorQuiz;
+    console.log("ID QUIZ: " + conhecimentosGerais.numQuiz);
+    console.log("ID PERGUNTA: " + conhecimentosGerais.numPergunta);
+    ++conhecimentosGerais.numPergunta;
   }
 
 // ###################### BOTÃO PROXIMA PERGUNTA ######################

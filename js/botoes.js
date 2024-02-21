@@ -102,7 +102,7 @@ document.querySelectorAll('.op').forEach(function(botao){
       //msg.display = "none";
 
     }else{*/
-      caixaQuiz.removeChild(msg.firstChild); //Remove a mensagem da tela
+      caixaQuiz.removeChild(msg); //Remove a mensagem da tela
     //}
     
   });
@@ -136,7 +136,7 @@ function btResponder(){ //Botão Responder
     novaMensagem.className = "mensagem";
     novaMensagem.innerHTML = "Marque uma das opções.";
     caixaQuiz.appendChild(novaMensagem);
-    caixaOpcoes.insertAdjacentElement('afterend',novaMensagem);
+    caixaOpcoes.insertAdjacentElement('afterend', novaMensagem);
     //}else{
       //caixaOpcoes.removeChild("novaMensagem");
     //}    

@@ -23,6 +23,10 @@ const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
     resposta: "Resposta...",      //Resposta
 }
 
+// ###################### INICIAR SEM ALGUNS ELEMENTOS ######################
+proximo.style.display = "none"; //Esconder o botao proximo
+
+
 // ###################### BOTÃO DE OPÇÕES ######################
 //1 - Quando selecionar uma opção, dar uma descrição de “marcado” 
 //2 - Ajustar para a cor de verde
@@ -71,7 +75,7 @@ document.querySelectorAll('.op').forEach(function(botao){
         statusOpC = "desmarcado";
         console.log("Teste a -> " + statusOpA);
         console.log("Teste b -> " + statusOpB); 
-        console.log("Teste c -> " + statusOpC); 
+        console.log("Teste c -> " + statusOpC);
         break;
       case 'op-b': //Caso clique no botão da opção B
         opA.style.backgroundColor = "blue";
@@ -98,12 +102,15 @@ document.querySelectorAll('.op').forEach(function(botao){
       default:
         console.log("Botão não reconhecido");
     }
-    /*if ((msg == "") || (msg == null) || (msg == undefined)){
+    /*if ((novaMensagem == "") || (novaMensagem == null) || (novaMensagem == undefined)){
       //msg.display = "none";
+      console.log("removido");
 
     }else{*/
-      caixaQuiz.removeChild(msg); //Remove a mensagem da tela
-    //}
+      //3.1.3 - Ao selecionar opção, excluir mensagem;  
+      caixaQuiz.removeChild(novaMensagem);    
+      //caixaOpcoes.removeChild("novaMensagem");
+    /*}*/
     
   });
 });
@@ -112,21 +119,27 @@ document.querySelectorAll('.op').forEach(function(botao){
 //1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
 //2 - Inserir um contador do numero quiz e do número da pergunta;
 //3 - Ao clicar no botão “responder”:
-  //3.1 - Esconder o botão Responder”;
-  //3.2 - Mostrar o botão “Próximo” (Próxima pergunta);
-  //3.3 - Precisa armazenar qual opção foi selecionada (a, b ou c);
-  //3.4 - Verificar se a opção selecionada é igual a opção correta da pergunta;
-  //3.5 - Se sim, exibir que o usuário acertou a resposta;
-  //3.6 - Se não, exibir que o usuário errou a resposta;
-    //3.6.1 - Mudar cor da opção selecionada para vermelha;
-    //3.6.2 - Mudar cor da opção correta para verde;
-    //3.6.3 - A opção que sobrar deixa de azul;
-  //3.7 - Mostrar a imagem e a resposta ao usuário;
+//3.1 - Validar se os botão estão selecionados;
+//3.1.1 - Se sim, continuar processo normal;
+//3.1.2 - Se não, exibir mensagem para selecionar uma opção pelo menos;
+//3.1.3 - Ao selecionar opção, excluir mensagem;
+//3.2 - Esconder o botão Responder”;
+//3.3 - Mostrar o botão “Próximo” (Próxima pergunta);
+//3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);
+//3.5 - Verificar se a opção selecionada é igual a opção correta da pergunta;
+//3.6 - Se sim, exibir que o usuário acertou a resposta;
+//3.7 - Se não, exibir que o usuário errou a resposta;
+//3.7.1 - Mudar cor da opção selecionada para vermelha;
+//3.7.2 - Mudar cor da opção correta para verde;
+//3.7.3 - A opção que sobrar deixa de azul;
+//3.8 - Mostrar a imagem e a resposta ao usuário;
 
 
 
 function btResponder(){ //Botão Responder
   var responder = document.getElementById("responder");
+
+  
 
   //Verifica se uma das opções foram selecionadas
   if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){    
@@ -138,18 +151,18 @@ function btResponder(){ //Botão Responder
     caixaQuiz.appendChild(novaMensagem);
     caixaOpcoes.insertAdjacentElement('afterend', novaMensagem);
     //}else{
-      //caixaOpcoes.removeChild("novaMensagem");
+      
     //}    
     //msg.innerHTML = "Marque uma das opções.";
     //document.removeChild("msg");
     //console.log("status esta desmarcado");
   }else{ //Se uma das opções estiver selecionada, então:
-//3.1.3 - Ao selecionar opção, excluir mensagem;
- 
-  
-
 //3.2 - Esconder o botão Responder”;
 //3.3 - Mostrar o botão “Próximo” (Próxima pergunta);
+responder.style.display = "none"; //Oculta o botão "responder"
+proximo.style.display = "block"; //Mostra o botão "próximo"
+
+
 //3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);
 //3.5 - Verificar se a opção selecionada é igual a opção correta da pergunta;
 //3.6 - Se sim, exibir que o usuário acertou a resposta;

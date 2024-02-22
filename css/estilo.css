@@ -147,13 +147,14 @@ header{
     /*background-color: aquamarine;*/
     /*border: 1px solid black;*/
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Coloca um espaço entre os elementos */
+    align-items: center; /* Centraliza os elementos */
     margin: 5px 0px 0px 0px;
     width: 100%;
     height: 40px; 
 }
 
-.botao-responder{
+.botao-responder, .botao-proximo{
     width: 30%;
     margin: 5px 0px 5px 0px;
     /*background-color: #006c97;*/
@@ -166,9 +167,11 @@ header{
     /*box-shadow: 2px 2px 4px black; /* Sombra na div: Direita / Embaixo / Sombra / Cor */
     transition-duration: 0.4s; /* Tempo de transição ao passar o mouse */
     cursor: pointer;
+    flex: 0 0 auto; /* Não cresce, não encolhe, tamanho automático */
+    margin: auto; /* Isso centraliza verticalmente o botão */ 
 }
 
-.botao-responder:hover{ /* Ao passar o mouse */
+.botao-responder:hover, .botao-proximo:hover{ /* Ao passar o mouse */
     background-color: #006c97; /* Muda a cor do botão */
     color: white; /* Muda a cor do texto */
     cursor: pointer;

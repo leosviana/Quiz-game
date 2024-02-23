@@ -54,12 +54,14 @@ opC.innerHTML = conhecimentosGerais.opc;   //Conteudo da opção C
 var opCorreta = conhecimentosGerais.opcorreta; //Opção Correta
 
 //MENSAGEM
-var msg = document.getElementById("mensagem");
-var novaMensagem;
+var msg = document.getElementById("mensagem"); //Declarando campo de mensagem do HTML
+var novaMensagem; //Declarando variável de nova mensagem;
 
 //RESPOSTA
+var responder = document.getElementById("responder"); //Declarando botão responder do HTML
 
 
+// ###################### BOTÃO DE OPÇÕES ######################
 // Adiciona um evento de clique a todos os elementos com a classe "op"
 document.querySelectorAll('.op').forEach(function(botao){
   botao.addEventListener('click', function(){        
@@ -102,20 +104,20 @@ document.querySelectorAll('.op').forEach(function(botao){
       default:
         console.log("Botão não reconhecido");
     }
-    /*if ((novaMensagem == "") || (novaMensagem == null) || (novaMensagem == undefined)){
-      //msg.display = "none";
+    if (caixaQuiz.contains(novaMensagem)){
+      caixaQuiz.removeChild(novaMensagem); 
       console.log("removido");
-
-    }else{*/
+    }
+    /*}else{*/
       //3.1.3 - Ao selecionar opção, excluir mensagem;  
-      caixaQuiz.removeChild(novaMensagem);    
+         
       //caixaOpcoes.removeChild("novaMensagem");
     /*}*/
     
   });
 });
 
-// ###################### BOTÃO DE RESPOSTA ######################
+// ###################### BOTÃO RESPONDER ######################
 //1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
 //2 - Inserir um contador do numero quiz e do número da pergunta;
 //3 - Ao clicar no botão “responder”:
@@ -123,6 +125,7 @@ document.querySelectorAll('.op').forEach(function(botao){
 //3.1.1 - Se sim, continuar processo normal;
 //3.1.2 - Se não, exibir mensagem para selecionar uma opção pelo menos;
 //3.1.3 - Ao selecionar opção, excluir mensagem;
+//3.x - Travar os botões de opção para não ser mais clicados;
 //3.2 - Esconder o botão Responder”;
 //3.3 - Mostrar o botão “Próximo” (Próxima pergunta);
 //3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);
@@ -137,30 +140,18 @@ document.querySelectorAll('.op').forEach(function(botao){
 
 
 function btResponder(){ //Botão Responder
-  var responder = document.getElementById("responder");
-
-  
-
   //Verifica se uma das opções foram selecionadas
   if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){    
-    //if (novaMensagem == ""){
+    //Criando elemento HTML <div class="mensagem" id="mensagem">Marque uma das opções.</div>
     novaMensagem = document.createElement("div");
     novaMensagem.id = "mensagem";
     novaMensagem.className = "mensagem";
     novaMensagem.innerHTML = "Marque uma das opções.";
     caixaQuiz.appendChild(novaMensagem);
-    caixaOpcoes.insertAdjacentElement('afterend', novaMensagem);
-    //}else{
-      
-    //}    
-    //msg.innerHTML = "Marque uma das opções.";
-    //document.removeChild("msg");
-    //console.log("status esta desmarcado");
+    caixaOpcoes.insertAdjacentElement('afterend', novaMensagem); //Inserindo após elemento "caixaOpcoes"  
   }else{ //Se uma das opções estiver selecionada, então:
-//3.2 - Esconder o botão Responder”;
-//3.3 - Mostrar o botão “Próximo” (Próxima pergunta);
-responder.style.display = "none"; //Oculta o botão "responder"
-proximo.style.display = "block"; //Mostra o botão "próximo"
+  responder.style.display = "none"; //Oculta o botão "responder"
+  proximo.style.display = "block"; //Mostra o botão "próximo"
 
 
 //3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);

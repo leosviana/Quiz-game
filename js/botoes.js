@@ -142,14 +142,22 @@ document.querySelectorAll('.op').forEach(function(botao){
 function btResponder(){ //Botão Responder
   //Verifica se uma das opções foram selecionadas
   if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){    
-    //Criando elemento HTML <div class="mensagem" id="mensagem">Marque uma das opções.</div>
-    novaMensagem = document.createElement("div");
-    novaMensagem.id = "mensagem";
-    novaMensagem.className = "mensagem";
-    novaMensagem.innerHTML = "Marque uma das opções.";
-    caixaQuiz.appendChild(novaMensagem);
-    caixaOpcoes.insertAdjacentElement('afterend', novaMensagem); //Inserindo após elemento "caixaOpcoes"  
-  }else{ //Se uma das opções estiver selecionada, então:
+    
+    if (caixaQuiz.contains(novaMensagem)){ //Se existir mensagem criada:
+      while(caixaQuiz.novaMensagem){ //Repete...
+        caixaQuiz.removeChild(caixaQuiz.novaMensagem); //Apaga mensagem
+      }
+    }else{ //Se não existir mensagem criada:
+      //Criar elemento HTML <div class="mensagem" id="mensagem">Marque uma das opções.</div>
+      console.log("criado novo filho");
+      novaMensagem = document.createElement("div");
+      novaMensagem.id = "mensagem";
+      novaMensagem.className = "mensagem";
+      novaMensagem.innerHTML = "Marque uma das opções.";
+      caixaQuiz.appendChild(novaMensagem);
+      caixaOpcoes.insertAdjacentElement('afterend', novaMensagem); //Inserindo após elemento "caixaOpcoes" 
+    } 
+  }else{ //Se o status de uma das opções já estiver como "marcada", então:
   responder.style.display = "none"; //Oculta o botão "responder"
   proximo.style.display = "block"; //Mostra o botão "próximo"
 

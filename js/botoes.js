@@ -19,7 +19,7 @@ const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
     opa: "Opção A",               //Opção A
     opb: "Opção B",               //Opção B
     opc: "Opção C",               //Opção C
-    opcorreta: "Opção B",         //Opção Correta
+    opcorreta: "Opção A",         //Opção Correta
     resposta: "Resposta...",      //Resposta
 }
 
@@ -133,13 +133,32 @@ function opcaoCorreta(){
   }else{
     msg = "Resposta errada.";
     novaMensagem(msg); //Exibir mensagem em tela
+    
     //statusOpA == "marcado" && opB.innerHTML == opCorreta > A == vermelho e B == verde
-    //statusOpA == "marcado" && opC.innerHTML == opCorreta > A == vermelho e C == verde
-    //statusOpB == "marcado" && opA.innerHTML == opCorreta > B == vermelho e A == verde
-    //statusOpB == "marcado" && opC.innerHTML == opCorreta > B == vermelho e C == verde
-    //statusOpC == "marcado" && opA.innerHTML == opCorreta > C == vermelho e A == verde
-    //statusOpC == "marcado" && opB.innerHTML == opCorreta > C == vermelho e B == verde
-
+    if(statusOpA == "marcado" && opB.innerHTML == opCorreta){
+      opA.style.backgroundColor = "red";
+      opB.style.backgroundColor = "green";
+    //statusOpA == "marcado" && opC.innerHTML == opCorreta >> A == vermelho e C == verde
+    }else if(statusOpA == "marcado" && opC.innerHTML == opCorreta){
+      opA.style.backgroundColor = "red";
+      opC.style.backgroundColor = "green";
+    //statusOpB == "marcado" && opA.innerHTML == opCorreta >> B == vermelho e A == verde
+    }else if(statusOpB == "marcado" && opA.innerHTML == opCorreta){
+      opB.style.backgroundColor = "red";
+      opA.style.backgroundColor = "green";
+    //statusOpB == "marcado" && opC.innerHTML == opCorreta >> B == vermelho e C == verde
+    }else if(statusOpB == "marcado" && opC.innerHTML == opCorreta){
+      opB.style.backgroundColor = "red";
+      opC.style.backgroundColor = "green";
+    //statusOpC == "marcado" && opA.innerHTML == opCorreta >> C == vermelho e A == verde
+    }else if(statusOpC == "marcado" && opA.innerHTML == opCorreta){
+      opC.style.backgroundColor = "red";
+      opA.style.backgroundColor = "green";
+    //statusOpC == "marcado" && opB.innerHTML == opCorreta >> C == vermelho e B == verde
+    }else if(statusOpC == "marcado" && opB.innerHTML == opCorreta){
+      opC.style.backgroundColor = "red";
+      opB.style.backgroundColor = "green";
+    }     
   }
 }
 

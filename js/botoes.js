@@ -129,10 +129,17 @@ function opcaoCorreta(){
       //Se opção C estiver marcada E opção C for igual Opção correta
       (statusOpC == "marcado" && opC.innerHTML == opCorreta)){
       msg = "Resposta certa!";
-      novaMensagem(msg); //Exibir mensagem em tela    
+      novaMensagem(msg); //Exibir mensagem em tela
   }else{
     msg = "Resposta errada.";
-    novaMensagem(msg); //Exibir mensagem em tela    
+    novaMensagem(msg); //Exibir mensagem em tela
+    //statusOpA == "marcado" && opB.innerHTML == opCorreta > A == vermelho e B == verde
+    //statusOpA == "marcado" && opC.innerHTML == opCorreta > A == vermelho e C == verde
+    //statusOpB == "marcado" && opA.innerHTML == opCorreta > B == vermelho e A == verde
+    //statusOpB == "marcado" && opC.innerHTML == opCorreta > B == vermelho e C == verde
+    //statusOpC == "marcado" && opA.innerHTML == opCorreta > C == vermelho e A == verde
+    //statusOpC == "marcado" && opB.innerHTML == opCorreta > C == vermelho e B == verde
+
   }
 }
 

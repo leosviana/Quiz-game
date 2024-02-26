@@ -46,16 +46,17 @@ var statusOpB = "desmarcado"; // --
 var statusOpC = "desmarcado"; // --
 var caixaOpcoes = document.getElementById("caixa-opcoes");
 var opA = document.getElementById("op-a"); //Declarando elemento HTML no JS -> opção A
-opA.innerHTML = conhecimentosGerais.opa;   //Conteudo da opção A
+opA.innerHTML = conhecimentosGerais.opa;   //Conteudo do objeto da opção A
 var opB = document.getElementById("op-b"); //Declarando elemento HTML no JS -> Opção B
-opB.innerHTML = conhecimentosGerais.opb;   //Conteudo da opção B
+opB.innerHTML = conhecimentosGerais.opb;   //Conteudo do objeto da opção B
 var opC = document.getElementById("op-c"); //Declarando elemento HTML no JS -> Opção C
-opC.innerHTML = conhecimentosGerais.opc;   //Conteudo da opção C
-var opCorreta = conhecimentosGerais.opcorreta; //Opção Correta
+opC.innerHTML = conhecimentosGerais.opc;   //Conteudo do objeto da opção C
+var opCorreta = conhecimentosGerais.opcorreta; //Conteudo do objeto da opção Correta
 
 //MENSAGEM
-var msg = document.getElementById("mensagem"); //Declarando campo de mensagem do HTML
-var novaMensagem; //Declarando variável de nova mensagem;
+//var msg = document.getElementById("mensagem"); //Declarando campo de mensagem do HTML
+var novaMsg; //Declarando variável de nova mensagem;
+var nada;
 
 //RESPOSTA
 var responder = document.getElementById("responder"); //Declarando botão responder do HTML
@@ -104,18 +105,37 @@ document.querySelectorAll('.op').forEach(function(botao){
       default:
         console.log("Botão não reconhecido");
     }
-    if (caixaQuiz.contains(novaMensagem)){
-      caixaQuiz.removeChild(novaMensagem); 
-      console.log("removido");
-    }
-    /*}else{*/
-      //3.1.3 - Ao selecionar opção, excluir mensagem;  
-         
-      //caixaOpcoes.removeChild("novaMensagem");
-    /*}*/
-    
+    if (caixaQuiz.contains(novaMsg)){ //Se conter mensagem criada
+      caixaQuiz.removeChild(novaMsg); //Remover mensagem
+    }    
   });
 });
+
+function novaMensagem(msg){ //Criar nova mensagem
+  //Criar elemento HTML <div class="mensagem" id="mensagem"> nova mensagem aqui </div>
+  novaMsg = document.createElement("div"); //Criando novo elemento "div"
+  novaMsg.id = "mensagem"; //id = "mensagem"
+  novaMsg.className = "mensagem"; //class = "mensagem"
+  novaMsg.innerHTML = msg; //Carregar e exibir mensagem
+  caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
+  caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes" 
+}
+
+function opcaoCorreta(){
+      //Se opção A estiver marcada E opção A for igual Opção correta
+  if ((statusOpA == "marcado" && opA.innerHTML == opCorreta) ||
+      //Se opção B estiver marcada E opção B for igual Opção correta
+      (statusOpB == "marcado" && opB.innerHTML == opCorreta) ||
+      //Se opção C estiver marcada E opção C for igual Opção correta
+      (statusOpC == "marcado" && opC.innerHTML == opCorreta)){
+      msg = "Resposta certa!";
+      novaMensagem(msg); //Exibir mensagem em tela    
+  }else{
+    msg = "Resposta errada.";
+    novaMensagem(msg); //Exibir mensagem em tela    
+  }
+}
+
 
 // ###################### BOTÃO RESPONDER ######################
 //1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
@@ -137,33 +157,25 @@ document.querySelectorAll('.op').forEach(function(botao){
 //3.7.3 - A opção que sobrar deixa de azul;
 //3.8 - Mostrar a imagem e a resposta ao usuário;
 
-
-
 function btResponder(){ //Botão Responder
   //Verifica se uma das opções foram selecionadas
   if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){ //Se todos botões estiverem com status "desmarcado"
     
-    if (caixaQuiz.contains(novaMensagem)){ //Se existir mensagem criada:
-      while(caixaQuiz.novaMensagem){ //Repete...
-        caixaQuiz.removeChild(caixaQuiz.novaMensagem); //Apaga mensagem
+    if (caixaQuiz.contains(novaMsg)){ //Se existir mensagem criada:
+      while(caixaQuiz.novaMsg){ //Repete...
+        caixaQuiz.removeChild(caixaQuiz.novaMsg); //Apaga mensagem
       }
-    }else{ //Se não existir mensagem criada:
-      //Criar elemento HTML <div class="mensagem" id="mensagem">Marque uma das opções.</div>
-      console.log("criado novo filho");
-      novaMensagem = document.createElement("div");
-      novaMensagem.id = "mensagem";
-      novaMensagem.className = "mensagem";
-      novaMensagem.innerHTML = "Marque uma das opções.";
-      caixaQuiz.appendChild(novaMensagem);
-      caixaOpcoes.insertAdjacentElement('afterend', novaMensagem); //Inserindo após elemento "caixaOpcoes" 
+    }else{ //Se não existir mensagem criada:      
+      msg = "Marque uma das opções";
+      novaMensagem(msg);
     } 
   }else{ //Se o status de uma das opções já estiver como "marcada", então:
-  responder.style.display = "none"; //Oculta o botão "responder"
-  proximo.style.display = "block"; //Mostra o botão "próximo"
-  opA.disabled = "true"; //Travar botão "Opção A"
-  opB.disabled = "true"; //Travar botão "Opção B"
-  opC.disabled = "true"; //Travar botão "Opção C"
-
+    responder.style.display = "none"; //Oculta o botão "responder"
+    proximo.style.display = "block"; //Mostra o botão "próximo"
+    opA.disabled = "true"; //Travar botão "Opção A"
+    opB.disabled = "true"; //Travar botão "Opção B"
+    opC.disabled = "true"; //Travar botão "Opção C"
+    opcaoCorreta();
 //3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);
 //3.5 - Verificar se a opção selecionada é igual a opção correta da pergunta;
 //3.6 - Se sim, exibir que o usuário acertou a resposta;

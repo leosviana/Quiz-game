@@ -20,7 +20,8 @@ const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
     opb: "Opção B",               //Opção B
     opc: "Opção C",               //Opção C
     opcorreta: "Opção A",         //Opção Correta
-    resposta: "Resposta...",      //Resposta
+    imgResp: "/img/img_teste.png",
+    explicacao: "Piririri...",      //Resposta
 }
 
 // ###################### INICIAR SEM ALGUNS ELEMENTOS ######################
@@ -121,11 +122,11 @@ function novaMensagem(msg){ //Criar nova mensagem
   caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes" 
 }
 
-function opcaoCorreta(){
+function opcaoCorreta(){ //Validar opção correta
       //Se opção A estiver marcada E opção A for igual Opção correta
-  if ((statusOpA == "marcado" && opA.innerHTML == opCorreta) ||
+  if ((statusOpA == "marcado" && opA.innerHTML == opCorreta) || // Ou
       //Se opção B estiver marcada E opção B for igual Opção correta
-      (statusOpB == "marcado" && opB.innerHTML == opCorreta) ||
+      (statusOpB == "marcado" && opB.innerHTML == opCorreta) || // Ou
       //Se opção C estiver marcada E opção C for igual Opção correta
       (statusOpC == "marcado" && opC.innerHTML == opCorreta)){
       msg = "Resposta certa!";
@@ -134,27 +135,27 @@ function opcaoCorreta(){
     msg = "Resposta errada.";
     novaMensagem(msg); //Exibir mensagem em tela
     
-    //statusOpA == "marcado" && opB.innerHTML == opCorreta > A == vermelho e B == verde
+    //Opção A == "marcado" E Opção B == Correta >> A == vermelho e B == verde
     if(statusOpA == "marcado" && opB.innerHTML == opCorreta){
       opA.style.backgroundColor = "red";
       opB.style.backgroundColor = "green";
-    //statusOpA == "marcado" && opC.innerHTML == opCorreta >> A == vermelho e C == verde
+    //Opção A == "marcado" E Opção C == Correta >> A == vermelho e C == verde
     }else if(statusOpA == "marcado" && opC.innerHTML == opCorreta){
       opA.style.backgroundColor = "red";
       opC.style.backgroundColor = "green";
-    //statusOpB == "marcado" && opA.innerHTML == opCorreta >> B == vermelho e A == verde
+    //Opção B == "marcado" E Opção A == Correta >> B == vermelho e A == verde
     }else if(statusOpB == "marcado" && opA.innerHTML == opCorreta){
       opB.style.backgroundColor = "red";
       opA.style.backgroundColor = "green";
-    //statusOpB == "marcado" && opC.innerHTML == opCorreta >> B == vermelho e C == verde
+    //Opção B == "marcado" E Opção C == Correta >> B == vermelho e C == verde
     }else if(statusOpB == "marcado" && opC.innerHTML == opCorreta){
       opB.style.backgroundColor = "red";
       opC.style.backgroundColor = "green";
-    //statusOpC == "marcado" && opA.innerHTML == opCorreta >> C == vermelho e A == verde
+    //Opção C == "marcado" E Opção A == Correta >> C == vermelho e A == verde
     }else if(statusOpC == "marcado" && opA.innerHTML == opCorreta){
       opC.style.backgroundColor = "red";
       opA.style.backgroundColor = "green";
-    //statusOpC == "marcado" && opB.innerHTML == opCorreta >> C == vermelho e B == verde
+    //Opção C == "marcado" E Opção B == Correta >> C == vermelho e B == verde
     }else if(statusOpC == "marcado" && opB.innerHTML == opCorreta){
       opC.style.backgroundColor = "red";
       opB.style.backgroundColor = "green";
@@ -162,6 +163,60 @@ function opcaoCorreta(){
   }
 }
 
+function exibirResposta(img, explic){
+  caixaResposta = document.createElement("div");
+  caixaResposta.id = "caixa-resposta";
+  caixaResposta.className = "caixa-resposta";
+  caixaQuiz.appendChild(caixaResposta);
+  caixaOpcoes.insertAdjacentElement('afterend', caixaResposta);
+
+  divImg = document.createElement("div");
+  divImg.id = "divimg";
+  caixaResposta.appendChild(divImg);
+  imgResposta = document.createElement("img");
+  imgResposta.id = "img-resposta";
+  imgResposta.className = "img-resposta";
+  imgResposta.src = img; // /img/img_teste.png
+  divImg.appendChild(imgResposta);
+  
+
+  msgExplicacao = document.createElement("div");
+  msgExplicacao.id = "resposta";
+  msgExplicacao.className = "resposta";
+  msgExplicacao.innerHTML = explic;
+  imgResposta.insertAdjacentElement('afterend', msgExplicacao);
+}
+
+/*
+  //Criar elemento HTML <div class="mensagem" id="mensagem"> nova mensagem aqui </div>
+  novaMsg = document.createElement("div"); //Criando novo elemento "div"
+  novaMsg.id = "mensagem"; //id = "mensagem"
+  novaMsg.className = "mensagem"; //class = "mensagem"
+  novaMsg.innerHTML = msg; //Carregar e exibir mensagem
+  caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
+  caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes" 
+*/
+
+
+
+/*function exibirResposta(){  
+  rsp = document.getElementById("rsp");
+  let resp = `
+  <div class="caixa-resposta">
+  <div>
+      <img class="img-resposta" src="/img/img_teste.png">             
+  </div>
+  <div class="resposta">
+      <p>
+          Resposta asdasdsad asdasdas
+      </p>
+  </div>
+</div>
+  `
+  rsp.innerHTML = resp; //Carregar e exibir mensagem
+  caixaQuiz.appendChild(rsp); //Criar como filha abaixo da div "caixa-quiz"
+  caixaOpcoes.insertAdjacentElement('afterend', rsp); //Inserindo após elemento "caixa-opcoes" 
+}*/
 
 // ###################### BOTÃO RESPONDER ######################
 //1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
@@ -202,6 +257,7 @@ function btResponder(){ //Botão Responder
     opB.disabled = "true"; //Travar botão "Opção B"
     opC.disabled = "true"; //Travar botão "Opção C"
     opcaoCorreta();
+    exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao);
 //3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);
 //3.5 - Verificar se a opção selecionada é igual a opção correta da pergunta;
 //3.6 - Se sim, exibir que o usuário acertou a resposta;

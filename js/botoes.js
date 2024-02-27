@@ -120,8 +120,7 @@ function novaMensagem(msg){ //Criar nova mensagem
   novaMsg.innerHTML = msg; //Carregar e exibir mensagem
   caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
   caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes" 
-  divImg.insertAdjacentElement('afterbegin', novaMsg);
-
+  
   // afterbegin  -> depois de começar
   // afterend    -> depois do fim
   // beforebegin -> antes de começar
@@ -232,16 +231,9 @@ function btResponder(){ //Botão Responder
     opA.disabled = "true"; //Travar botão "Opção A"
     opB.disabled = "true"; //Travar botão "Opção B"
     opC.disabled = "true"; //Travar botão "Opção C"
-    opcaoCorreta();
-    exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao);
-//3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);
-//3.5 - Verificar se a opção selecionada é igual a opção correta da pergunta;
-//3.6 - Se sim, exibir que o usuário acertou a resposta;
-//3.7 - Se não, exibir que o usuário errou a resposta;
-//3.7.1 - Mudar cor da opção selecionada para vermelha;
-//3.7.2 - Mudar cor da opção correta para verde;
-//3.7.3 - A opção que sobrar deixa de azul;
-//3.8 - Mostrar a imagem e a resposta ao usuário;
+    opcaoCorreta(); //Verificar se resposta está correta
+    exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao); //Exibir imagem e explicação
+
     console.log("ID QUIZ: " + conhecimentosGerais.numQuiz);
     console.log("ID PERGUNTA: " + conhecimentosGerais.numPergunta);
     ++conhecimentosGerais.numPergunta;

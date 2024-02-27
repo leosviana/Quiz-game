@@ -120,6 +120,12 @@ function novaMensagem(msg){ //Criar nova mensagem
   novaMsg.innerHTML = msg; //Carregar e exibir mensagem
   caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
   caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes" 
+  divImg.insertAdjacentElement('afterbegin', novaMsg);
+
+  // afterbegin  -> depois de começar
+  // afterend    -> depois do fim
+  // beforebegin -> antes de começar
+  // beforeend   -> antes do fim
 }
 
 function opcaoCorreta(){ //Validar opção correta
@@ -164,59 +170,29 @@ function opcaoCorreta(){ //Validar opção correta
 }
 
 function exibirResposta(img, explic){
+  //Criando elemento "div" da caixa de resposta
   caixaResposta = document.createElement("div");
-  caixaResposta.id = "caixa-resposta";
-  caixaResposta.className = "caixa-resposta";
-  caixaQuiz.appendChild(caixaResposta);
-  caixaOpcoes.insertAdjacentElement('afterend', caixaResposta);
+  caixaResposta.id = "caixa-resposta"; //Inserindo nome do id
+  caixaResposta.className = "caixa-resposta"; //Inserindo nome da classe
+  caixaQuiz.appendChild(caixaResposta); //Criando dentro da div "caixa-quiz"
+  caixaOpcoes.insertAdjacentElement('afterend', caixaResposta); //Inserindo após a div "caixa-opcoes"
 
+  //Criando elemento "div" da imagem da resposta
   divImg = document.createElement("div");
-  divImg.id = "divimg";
-  caixaResposta.appendChild(divImg);
-  imgResposta = document.createElement("img");
-  imgResposta.id = "img-resposta";
-  imgResposta.className = "img-resposta";
-  imgResposta.src = img; // /img/img_teste.png
-  divImg.appendChild(imgResposta);
-  
+  caixaResposta.appendChild(divImg); //Criando dentro da div da caixa de resposta
+  imgResposta = document.createElement("img"); //Criando elemento "img"
+  imgResposta.id = "img-resposta"; //Inserindo nome do id
+  imgResposta.className = "img-resposta"; //Inserindo nome da classe
+  imgResposta.src = img; // arquivo da imagem
+  divImg.appendChild(imgResposta); //Criando dentro da div da imagem
 
+  //Criando elemento "div" da explicação
   msgExplicacao = document.createElement("div");
-  msgExplicacao.id = "resposta";
-  msgExplicacao.className = "resposta";
-  msgExplicacao.innerHTML = explic;
-  imgResposta.insertAdjacentElement('afterend', msgExplicacao);
+  msgExplicacao.id = "resposta"; //Inserindo nome do id
+  msgExplicacao.className = "resposta"; //Inserindo nome da classe
+  msgExplicacao.innerHTML = explic; //Exibindo explicação em tela
+  divImg.insertAdjacentElement('afterend', msgExplicacao); //Inserindo após o elemento div de imagem
 }
-
-/*
-  //Criar elemento HTML <div class="mensagem" id="mensagem"> nova mensagem aqui </div>
-  novaMsg = document.createElement("div"); //Criando novo elemento "div"
-  novaMsg.id = "mensagem"; //id = "mensagem"
-  novaMsg.className = "mensagem"; //class = "mensagem"
-  novaMsg.innerHTML = msg; //Carregar e exibir mensagem
-  caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
-  caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes" 
-*/
-
-
-
-/*function exibirResposta(){  
-  rsp = document.getElementById("rsp");
-  let resp = `
-  <div class="caixa-resposta">
-  <div>
-      <img class="img-resposta" src="/img/img_teste.png">             
-  </div>
-  <div class="resposta">
-      <p>
-          Resposta asdasdsad asdasdas
-      </p>
-  </div>
-</div>
-  `
-  rsp.innerHTML = resp; //Carregar e exibir mensagem
-  caixaQuiz.appendChild(rsp); //Criar como filha abaixo da div "caixa-quiz"
-  caixaOpcoes.insertAdjacentElement('afterend', rsp); //Inserindo após elemento "caixa-opcoes" 
-}*/
 
 // ###################### BOTÃO RESPONDER ######################
 //1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;

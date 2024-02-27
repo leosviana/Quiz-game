@@ -119,7 +119,8 @@ function novaMensagem(msg){ //Criar nova mensagem
   novaMsg.className = "mensagem"; //class = "mensagem"
   novaMsg.innerHTML = msg; //Carregar e exibir mensagem
   caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
-  caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes" 
+  caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes"
+  //caixaOpcoes.insertAdjacentElement('afterbegin', novaMsg); //Inserindo após elemento "caixa-opcoes" 
   
   // afterbegin  -> depois de começar
   // afterend    -> depois do fim
@@ -231,7 +232,7 @@ function btResponder(){ //Botão Responder
     opA.disabled = "true"; //Travar botão "Opção A"
     opB.disabled = "true"; //Travar botão "Opção B"
     opC.disabled = "true"; //Travar botão "Opção C"
-    opcaoCorreta(); //Verificar se resposta está correta
+    opcaoCorreta(); //Verificar se a resposta está correta
     exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao); //Exibir imagem e explicação
 
     console.log("ID QUIZ: " + conhecimentosGerais.numQuiz);

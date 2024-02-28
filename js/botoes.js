@@ -33,7 +33,7 @@ const conhecimentosGerais = [
     opa: "Opção A parara",
     opb: "Opção B parara",
     opc: "Opção C parara",
-    opcorreta: "Opção C parara",
+    opcorreta: "Opção A parara",
     imgResp: "/img/img_teste.png",
     explicacao: "Parara....",
   },
@@ -49,11 +49,6 @@ const conhecimentosGerais = [
     explicacao: "Perere....",
   }
 ]
-
-
-
-// ###################### INICIAR SEM OS ELEMENTOS ######################
-//proximo.style.display = "none"; //Esconder o botao proximo
 
 // ###################### VARIAVEIS GLOBAIS DO PROJETO ######################
 //QUIZ
@@ -84,6 +79,7 @@ var novaMsg; //Declarando variável de nova mensagem;
 //BOTÕES
 var responder = document.getElementById("responder"); //Declarando botão responder do HTML
 var proximo = document.getElementById("proximo"); //Declarando botão proximo do HTML
+proximo.style.display = "none"; //Iniciar escondendo o botao proximo
 
 // ###################### BOTÃO DE OPÇÕES ######################
 //1 - Quando selecionar uma opção, dar um status de “marcado”;
@@ -103,9 +99,7 @@ document.querySelectorAll('.op').forEach(function(botao){
         statusOpA = "marcado";
         statusOpB = "desmarcado";
         statusOpC = "desmarcado";
-        console.log("Teste a -> " + statusOpA);
-        console.log("Teste b -> " + statusOpB); 
-        console.log("Teste c -> " + statusOpC);
+        console.log("a) " + statusOpA + " | b) " + statusOpB + " | c) " + statusOpC);
         break;
       case 'op-b': //Caso clique no botão da opção B
         opA.style.backgroundColor = "blue";
@@ -114,9 +108,7 @@ document.querySelectorAll('.op').forEach(function(botao){
         statusOpA = "desmarcado";
         statusOpB = "marcado";
         statusOpC = "desmarcado";
-        console.log("Teste a -> " + statusOpA);
-        console.log("Teste b -> " + statusOpB); 
-        console.log("Teste c -> " + statusOpC); 
+        console.log("a) " + statusOpA + " | b) " + statusOpB + " | c) " + statusOpC);
         break;
       case 'op-c': //Caso clique no botão da opção C
         opA.style.backgroundColor = "blue";
@@ -125,9 +117,7 @@ document.querySelectorAll('.op').forEach(function(botao){
         statusOpA = "desmarcado";
         statusOpB = "desmarcado";
         statusOpC = "marcado";
-        console.log("Teste a -> " + statusOpA);
-        console.log("Teste b -> " + statusOpB); 
-        console.log("Teste c -> " + statusOpC); 
+        console.log("a) " + statusOpA + " | b) " + statusOpB + " | c) " + statusOpC);
         break;
       default:
         console.log("Botão não reconhecido");
@@ -173,9 +163,9 @@ function btResponder(){ //Botão Responder
   }else{ //Se o status de uma das opções já estiver como "marcada", então:
     responder.style.display = "none"; //Oculta o botão "responder"
     proximo.style.display = "block"; //Mostra o botão "próximo"
-    opA.disabled = "true"; //Travar botão "Opção A"
-    opB.disabled = "true"; //Travar botão "Opção B"
-    opC.disabled = "true"; //Travar botão "Opção C"
+    opA.disabled = true; //Desabilitar botão "Opção A"
+    opB.disabled = true; //Desabilitar botão "Opção B"
+    opC.disabled = true; //Desabilitar botão "Opção C"
     opcaoCorreta(); //Verificar se a resposta está correta
     exibirResposta(conhecimentosGerais[0].imgResp, conhecimentosGerais[0].explicacao); //Exibir imagem e explicação da resposta
 
@@ -275,17 +265,33 @@ function exibirResposta(img, explic){
 function btProximo(){  
   console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
   console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
-  
+
+  idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[contPergunta].numPergunta; //Número da pergunta
+  pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[contPergunta].pergunta; //Descrição da pergunta
+  opA.innerHTML = conhecimentosGerais[contPergunta].opa; //Conteudo do objeto da opção A
+  opB.innerHTML = conhecimentosGerais[contPergunta].opb; //Conteudo do objeto da opção B
+  opC.innerHTML = conhecimentosGerais[contPergunta].opc; //Conteudo do objeto da opção C
+  //Habilitando as opções novamente
+  opA.disabled = false; //Habilitar botão "Opção A"
+  opB.disabled = false; //Habilitar botão "Opção B"
+  opC.disabled = false; //Habilitar botão "Opção C"
   //Alterando status das opção para "desmarcado"
   statusOpA = "desmarcado";
   statusOpB = "desmarcado";
   statusOpC = "desmarcado";
+  //Mudando a cor par azul novamente
+  opA.style.backgroundColor = "blue";
+  opB.style.backgroundColor = "blue";
+  opC.style.backgroundColor = "blue";
+  //Excluindo mensagem
+  caixaOpcoes.removeChild(novaMsg);
   //Excluindo resposta
   caixaQuiz.removeChild(caixaResposta);
-  //Exibir botão "Responder"
-  btResponder.style.display = "block";
   //Ocultar botão "Proximo"
-  btProximo.style.display = "none";
+  proximo.style.display = "none";
+  //Exibir botão "Responder"
+  responder.style.display = "block";
+  
   
 
   contPergunta++;

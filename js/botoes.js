@@ -24,6 +24,18 @@ const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
     explicacao: "Piririri...",      //Resposta
 }
 
+const conhecimentosGerais2 = { //Criando objeto Quiz - Pergunta 1
+  numQuiz: 1,
+  numPergunta: 2,
+  pergunta: "Como é terere...", //Pergunta
+  opa: "Opção A",               //Opção A
+  opb: "Opção B",               //Opção B
+  opc: "Opção C",               //Opção C
+  opcorreta: "Opção B",         //Opção Correta
+  imgResp: "/img/img_teste.png",
+  explicacao: "Explicação tererere...",      //Resposta
+}
+
 // ###################### INICIAR SEM ALGUNS ELEMENTOS ######################
 proximo.style.display = "none"; //Esconder o botao proximo
 
@@ -233,16 +245,17 @@ function exibirResposta(img, explic){
 
 
 // ###################### BOTÃO PROXIMA PERGUNTA ######################
-//1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
-//2 - Iniciar contador do numero quiz igual ao que está;
-//3 - Adicionar +1 ao contador do número da pergunta;
-//4 - Esconder botão “responder”;
-//5 - Limpar status das opções selecionadas (a, b ou c);
-//4 - Verificar se a opção selecionada é igual a opção correta da pergunta;
-//5 - Se sim, exibir que o usuário acertou a resposta;
-//6 - Mostrar a imagem e a resposta ao usuário;
-//7 - Ocultar o botão “responder”;
-//8 - Mostrar o botão “Próximo” (Próxima pergunta);
+//1 - Iniciar contador do numero quiz igual ao que está;
+//2 - Adicionar +1 ao contador do número da pergunta;
+//3 - Ocultar o botão “proximo”;
+//4 - Mostrar o botão “responder”;
+//5 - Esconder resposta;
+//6 - Limpar descrição dos botões;
+//7 - Exibir descrição da proxima pergunta;
+//7 - Limpar status das opções selecionadas (a, b ou c);
+// - Se clicar no botão "responder", faz todo processo do botão "responder" novamente
+
+
 /*function btProximo(){
 
 

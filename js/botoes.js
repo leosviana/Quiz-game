@@ -107,7 +107,7 @@ document.querySelectorAll('.op').forEach(function(botao){
         console.log("Botão não reconhecido");
     }
     if (caixaQuiz.contains(novaMsg)){ //Se conter mensagem criada
-      caixaQuiz.removeChild(novaMsg); //Remover mensagem
+      caixaOpcoes.removeChild(novaMsg); //Remover mensagem
     }    
   });
 });
@@ -121,7 +121,7 @@ function btResponder(){ //Botão Responder
       while(caixaQuiz.novaMsg){ //Repete...
         caixaQuiz.removeChild(caixaQuiz.novaMsg); //Apaga mensagem novamente
       }
-    }else{ //Se não existir mensagem criada:      
+    }else{ //Se não existir mensagem criada:
       msg = "Marque uma das opções";
       novaMensagem(msg);
     } 

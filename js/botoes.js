@@ -11,8 +11,8 @@
   }
 }*/
 
-//OBJETO PERGUNTA TESTE
-const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
+//OBJETO COMUM PERGUNTA TESTE
+/*const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
     numQuiz: 1,
     numPergunta: 1,
     pergunta: "Qual é tarara...", //Pergunta
@@ -22,31 +22,47 @@ const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
     opcorreta: "Opção A",         //Opção Correta
     imgResp: "/img/img_teste.png",
     explicacao: "Piririri...",      //Resposta
-}
+}*/
 
-const conhecimentosGerais2 = { //Criando objeto Quiz - Pergunta 1
-  numQuiz: 1,
-  numPergunta: 2,
-  pergunta: "Como é terere...", //Pergunta
-  opa: "Opção A",               //Opção A
-  opb: "Opção B",               //Opção B
-  opc: "Opção C",               //Opção C
-  opcorreta: "Opção B",         //Opção Correta
-  imgResp: "/img/img_teste.png",
-  explicacao: "Explicação tererere...",      //Resposta
-}
+//ARRAY DE OBJETO PERGUNTA TESTE
+const conhecimentosGerais = [
+  {
+    numQuiz: 1,
+    numPergunta: 1,
+    pergunta: "Qual é tarara...",
+    opa: "Opção A parara",
+    opb: "Opção B parara",
+    opc: "Opção C parara",
+    opcorreta: "Opção C parara",
+    imgResp: "/img/img_teste.png",
+    explicacao: "Parara....",
+  },
+  {
+    numQuiz: 1,
+    numPergunta: 2,
+    pergunta: "Qual é perere...",
+    opa: "Opção A perere",
+    opb: "Opção B perere",
+    opc: "Opção C perere",
+    opcorreta: "Opção C perere",
+    imgResp: "/img/img_teste.png",
+    explicacao: "Perere....",
+  }
+]
 
-// ###################### INICIAR SEM ALGUNS ELEMENTOS ######################
+
+
+// ###################### INICIAR SEM OS ELEMENTOS ######################
 proximo.style.display = "none"; //Esconder o botao proximo
 
 // ###################### VARIAVEIS GLOBAIS DO PROJETO ######################
 //QUIZ
 var caixaQuiz = document.getElementById("caixa-quiz");
-var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + conhecimentosGerais.numQuiz; //Número do quiz
+var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + conhecimentosGerais[1].numQuiz; //Número do quiz
 
 //PERGUNTA
-var idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais.numPergunta; //Número da pergunta
-var pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais.pergunta; //Descrição da pergunta
+var idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[1].numPergunta; //Número da pergunta
+var pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[1].pergunta; //Descrição da pergunta
 
 //OPÇÕES
 var statusOpA = "desmarcado"; //Iniciar status das opções como desmarcada
@@ -54,12 +70,12 @@ var statusOpB = "desmarcado"; // --
 var statusOpC = "desmarcado"; // --
 var caixaOpcoes = document.getElementById("caixa-opcoes");
 var opA = document.getElementById("op-a"); //Declarando elemento HTML no JS -> opção A
-opA.innerHTML = conhecimentosGerais.opa;   //Conteudo do objeto da opção A
+opA.innerHTML = conhecimentosGerais[1].opa;   //Conteudo do objeto da opção A
 var opB = document.getElementById("op-b"); //Declarando elemento HTML no JS -> Opção B
-opB.innerHTML = conhecimentosGerais.opb;   //Conteudo do objeto da opção B
+opB.innerHTML = conhecimentosGerais[1].opb;   //Conteudo do objeto da opção B
 var opC = document.getElementById("op-c"); //Declarando elemento HTML no JS -> Opção C
-opC.innerHTML = conhecimentosGerais.opc;   //Conteudo do objeto da opção C
-var opCorreta = conhecimentosGerais.opcorreta; //Conteudo do objeto da opção Correta
+opC.innerHTML = conhecimentosGerais[1].opc;   //Conteudo do objeto da opção C
+var opCorreta = conhecimentosGerais[1].opcorreta; //Conteudo do objeto da opção Correta
 
 //MENSAGEM
 var novaMsg; //Declarando variável de nova mensagem;
@@ -161,9 +177,9 @@ function btResponder(){ //Botão Responder
     opcaoCorreta(); //Verificar se a resposta está correta
     exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao); //Exibir imagem e explicação da resposta
 
-    console.log("ID QUIZ: " + conhecimentosGerais.numQuiz);
-    console.log("ID PERGUNTA: " + conhecimentosGerais.numPergunta);
-    ++conhecimentosGerais.numPergunta;
+    console.log("ID QUIZ: " + conhecimentosGerais[1].numQuiz);
+    console.log("ID PERGUNTA: " + conhecimentosGerais[1].numPergunta);
+    ++conhecimentosGerais[1].numPergunta;
   }
 
 function novaMensagem(msg){ //Criar nova mensagem
@@ -253,15 +269,17 @@ function exibirResposta(img, explic){
 //6 - Limpar descrição dos botões;
 //7 - Exibir descrição da proxima pergunta;
 //7 - Limpar status das opções selecionadas (a, b ou c);
-// - Se clicar no botão "responder", faz todo processo do botão "responder" novamente
+//8 - Se clicar no botão "responder", faz todo processo do botão "responder" novamente
+
+function btProximo(){
+  var  contPergunta;
+  
+
+  ++contPergunta;
 
 
-/*function btProximo(){
 
-
-  ++contadorQuiz;
-
-}*/
+}
 
   //escrever em atributos id:
   //https://www.w3schools.com/jsref/prop_html_innerhtml.asp

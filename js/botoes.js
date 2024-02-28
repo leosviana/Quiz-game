@@ -261,8 +261,6 @@ function exibirResposta(img, explic){
   divImg.insertAdjacentElement('afterend', msgExplicacao); //Inserindo após o elemento div de imagem
 }
 
-
-
 // ###################### BOTÃO PROXIMA PERGUNTA ######################
 //OK 1 - Iniciar contador do numero quiz igual ao que está;
 //OK 2 - Adicionar +1 ao contador do número da pergunta;

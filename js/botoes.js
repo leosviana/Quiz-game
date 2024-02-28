@@ -264,11 +264,11 @@ function exibirResposta(img, explic){
 
 
 // ###################### BOTÃO PROXIMA PERGUNTA ######################
-//1 - Iniciar contador do numero quiz igual ao que está;
-//2 - Adicionar +1 ao contador do número da pergunta;
+//OK 1 - Iniciar contador do numero quiz igual ao que está;
+//OK 2 - Adicionar +1 ao contador do número da pergunta;
 //3 - Ocultar o botão “proximo”;
 //4 - Mostrar o botão “responder”;
-//5 - Esconder resposta;
+//OK 5 - Excluir resposta;
 //6 - Limpar descrição dos botões;
 //7 - Exibir descrição da proxima pergunta;
 //7 - Limpar status das opções selecionadas (a, b ou c);
@@ -278,10 +278,17 @@ function btProximo(){
   console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
   console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
   
+  //Alterando status das opção para "desmarcado"
+  statusOpA = "desmarcado";
+  statusOpB = "desmarcado";
+  statusOpC = "desmarcado";
   //Excluindo resposta
-  caixaOpcoes.removeChild(caixaQuiz.caixaResposta);
-  divImg.removeChild(caixaQuiz.imgResposta);
-  divImg.removeChild(caixaQuiz.msgExplicacao);
+  caixaQuiz.removeChild(caixaResposta);
+  //Exibir botão "Responder"
+  btResponder.style.display = "block";
+  //Ocultar botão "Proximo"
+  btProximo.style.display = "none";
+  
 
   contPergunta++;
 }

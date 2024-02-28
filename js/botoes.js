@@ -262,7 +262,8 @@ function exibirResposta(img, explic){
 //7 - Limpar status das opções selecionadas (a, b ou c);
 //8 - Se clicar no botão "responder", faz todo processo do botão "responder" novamente
 
-function btProximo(){  
+function btProximo(){ 
+  contPergunta++; 
   console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
   console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
 
@@ -294,7 +295,7 @@ function btProximo(){
   
   
 
-  contPergunta++;
+  
 }
 
   //escrever em atributos id:

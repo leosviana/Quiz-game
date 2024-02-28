@@ -11,7 +11,7 @@
   }
 }*/
 
-//OBJETO TESTE
+//OBJETO PERGUNTA TESTE
 const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
     numQuiz: 1,
     numPergunta: 1,
@@ -27,19 +27,14 @@ const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
 // ###################### INICIAR SEM ALGUNS ELEMENTOS ######################
 proximo.style.display = "none"; //Esconder o botao proximo
 
-
-// ###################### BOTÃO DE OPÇÕES ######################
-//1 - Quando selecionar uma opção, dar uma descrição de “marcado” 
-//2 - Ajustar para a cor de verde
-//3 - Marcar as outras opções com a cor azul
-
+// ###################### VARIAVEIS GLOBAIS DO PROJETO ######################
 //QUIZ
 var caixaQuiz = document.getElementById("caixa-quiz");
 var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + conhecimentosGerais.numQuiz; //Número do quiz
 
 //PERGUNTA
 var idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais.numPergunta; //Número da pergunta
-var pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais.pergunta;
+var pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais.pergunta; //Descrição da pergunta
 
 //OPÇÕES
 var statusOpA = "desmarcado"; //Iniciar status das opções como desmarcada
@@ -55,15 +50,16 @@ opC.innerHTML = conhecimentosGerais.opc;   //Conteudo do objeto da opção C
 var opCorreta = conhecimentosGerais.opcorreta; //Conteudo do objeto da opção Correta
 
 //MENSAGEM
-//var msg = document.getElementById("mensagem"); //Declarando campo de mensagem do HTML
 var novaMsg; //Declarando variável de nova mensagem;
-var nada;
 
 //RESPOSTA
 var responder = document.getElementById("responder"); //Declarando botão responder do HTML
 
-
 // ###################### BOTÃO DE OPÇÕES ######################
+//1 - Quando selecionar uma opção, dar um status de “marcado”;
+//2 - Ajustar para a cor de verde;
+//3 - Marcar as outras opções com a cor azul;
+
 // Adiciona um evento de clique a todos os elementos com a classe "op"
 document.querySelectorAll('.op').forEach(function(botao){
   botao.addEventListener('click', function(){        
@@ -113,6 +109,25 @@ document.querySelectorAll('.op').forEach(function(botao){
 });
 
 // ###################### BOTÃO RESPONDER ######################
+//1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
+//2 - Inserir um contador do numero quiz e do número da pergunta;
+//3 - Ao clicar no botão “responder”:
+//  3.1 Validar se os botão estão selecionados;
+//    3.1.1 - Se sim, continuar processo normal;
+//    3.1.2 - Se não, exibir mensagem para selecionar uma opção pelo menos;
+//    3.1.3 - Ao selecionar opção, excluir mensagem;
+//3.2 - Travar os botões de opção para não ser mais clicados;
+//3.3 - Esconder o botão Responder”;
+//3.4 - Mostrar o botão “Próximo” (Próxima pergunta);
+//3.5 - Precisa armazenar qual opção foi selecionada (a, b ou c);
+//3.6 - Verificar se a opção selecionada é igual a opção correta da pergunta;
+//  3.6.1 - Se sim, exibir que o usuário acertou a resposta;
+//  3.6.2 - Se não, exibir que o usuário errou a resposta;
+//  3.6.3 - Mudar cor da opção selecionada para vermelha;
+//  3.6.4 - Mudar cor da opção correta para verde;
+//  3.6.5 - A opção que sobrar deixa de azul;
+//3.7 - Mostrar a imagem e a explicação ao usuário;
+
 function btResponder(){ //Botão Responder
   //Verifica se uma das opções foram selecionadas
   if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){ //Se todos botões estiverem com status "desmarcado"
@@ -132,7 +147,7 @@ function btResponder(){ //Botão Responder
     opB.disabled = "true"; //Travar botão "Opção B"
     opC.disabled = "true"; //Travar botão "Opção C"
     opcaoCorreta(); //Verificar se a resposta está correta
-    exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao); //Exibir imagem e explicação
+    exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao); //Exibir imagem e explicação da resposta
 
     console.log("ID QUIZ: " + conhecimentosGerais.numQuiz);
     console.log("ID PERGUNTA: " + conhecimentosGerais.numPergunta);
@@ -146,12 +161,7 @@ function novaMensagem(msg){ //Criar nova mensagem
   novaMsg.className = "mensagem"; //class = "mensagem"
   novaMsg.innerHTML = msg; //Carregar e exibir mensagem
   caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
-  caixaOpcoes.insertAdjacentElement('beforeend', novaMsg); //Inserindo elemento antes "caixa-opcoes"
-  
-  // afterbegin  -> depois de começar
-  // afterend    -> depois do fim
-  // beforebegin -> antes de começar
-  // beforeend   -> antes do fim
+  caixaOpcoes.insertAdjacentElement('beforeend', novaMsg); //Inserindo elemento dentro da div "caixa-opcoes" mas ao final
 }
 
 function opcaoCorreta(){ //Validar opção correta

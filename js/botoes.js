@@ -112,6 +112,33 @@ document.querySelectorAll('.op').forEach(function(botao){
   });
 });
 
+// ###################### BOTÃO RESPONDER ######################
+function btResponder(){ //Botão Responder
+  //Verifica se uma das opções foram selecionadas
+  if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){ //Se todos botões estiverem com status "desmarcado"
+    
+    if (caixaQuiz.contains(novaMsg)){ //Se existir mensagem criada:
+      while(caixaQuiz.novaMsg){ //Repete...
+        caixaQuiz.removeChild(caixaQuiz.novaMsg); //Apaga mensagem novamente
+      }
+    }else{ //Se não existir mensagem criada:      
+      msg = "Marque uma das opções";
+      novaMensagem(msg);
+    } 
+  }else{ //Se o status de uma das opções já estiver como "marcada", então:
+    responder.style.display = "none"; //Oculta o botão "responder"
+    proximo.style.display = "block"; //Mostra o botão "próximo"
+    opA.disabled = "true"; //Travar botão "Opção A"
+    opB.disabled = "true"; //Travar botão "Opção B"
+    opC.disabled = "true"; //Travar botão "Opção C"
+    opcaoCorreta(); //Verificar se a resposta está correta
+    exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao); //Exibir imagem e explicação
+
+    console.log("ID QUIZ: " + conhecimentosGerais.numQuiz);
+    console.log("ID PERGUNTA: " + conhecimentosGerais.numPergunta);
+    ++conhecimentosGerais.numPergunta;
+  }
+
 function novaMensagem(msg){ //Criar nova mensagem
   //Criar elemento HTML <div class="mensagem" id="mensagem"> nova mensagem aqui </div>
   novaMsg = document.createElement("div"); //Criando novo elemento "div"
@@ -119,8 +146,7 @@ function novaMensagem(msg){ //Criar nova mensagem
   novaMsg.className = "mensagem"; //class = "mensagem"
   novaMsg.innerHTML = msg; //Carregar e exibir mensagem
   caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
-  caixaOpcoes.insertAdjacentElement('afterend', novaMsg); //Inserindo após elemento "caixa-opcoes"
-  //caixaOpcoes.insertAdjacentElement('afterbegin', novaMsg); //Inserindo após elemento "caixa-opcoes" 
+  caixaOpcoes.insertAdjacentElement('beforeend', novaMsg); //Inserindo elemento antes "caixa-opcoes"
   
   // afterbegin  -> depois de começar
   // afterend    -> depois do fim
@@ -194,51 +220,7 @@ function exibirResposta(img, explic){
   divImg.insertAdjacentElement('afterend', msgExplicacao); //Inserindo após o elemento div de imagem
 }
 
-// ###################### BOTÃO RESPONDER ######################
-//1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;
-//2 - Inserir um contador do numero quiz e do número da pergunta;
-//3 - Ao clicar no botão “responder”:
-//3.1 - Validar se os botão estão selecionados;
-//3.1.1 - Se sim, continuar processo normal;
-//3.1.2 - Se não, exibir mensagem para selecionar uma opção pelo menos;
-//3.1.3 - Ao selecionar opção, excluir mensagem;
-//3.x - Travar os botões de opção para não ser mais clicados;
-//3.2 - Esconder o botão Responder”;
-//3.3 - Mostrar o botão “Próximo” (Próxima pergunta);
-//3.4 - Precisa armazenar qual opção foi selecionada (a, b ou c);
-//3.5 - Verificar se a opção selecionada é igual a opção correta da pergunta;
-//3.6 - Se sim, exibir que o usuário acertou a resposta;
-//3.7 - Se não, exibir que o usuário errou a resposta;
-//3.7.1 - Mudar cor da opção selecionada para vermelha;
-//3.7.2 - Mudar cor da opção correta para verde;
-//3.7.3 - A opção que sobrar deixa de azul;
-//3.8 - Mostrar a imagem e a resposta ao usuário;
 
-function btResponder(){ //Botão Responder
-  //Verifica se uma das opções foram selecionadas
-  if ((statusOpA == "desmarcado") && (statusOpB == "desmarcado") && (statusOpC == "desmarcado")){ //Se todos botões estiverem com status "desmarcado"
-    
-    if (caixaQuiz.contains(novaMsg)){ //Se existir mensagem criada:
-      while(caixaQuiz.novaMsg){ //Repete...
-        caixaQuiz.removeChild(caixaQuiz.novaMsg); //Apaga mensagem
-      }
-    }else{ //Se não existir mensagem criada:      
-      msg = "Marque uma das opções";
-      novaMensagem(msg);
-    } 
-  }else{ //Se o status de uma das opções já estiver como "marcada", então:
-    responder.style.display = "none"; //Oculta o botão "responder"
-    proximo.style.display = "block"; //Mostra o botão "próximo"
-    opA.disabled = "true"; //Travar botão "Opção A"
-    opB.disabled = "true"; //Travar botão "Opção B"
-    opC.disabled = "true"; //Travar botão "Opção C"
-    opcaoCorreta(); //Verificar se a resposta está correta
-    exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao); //Exibir imagem e explicação
-
-    console.log("ID QUIZ: " + conhecimentosGerais.numQuiz);
-    console.log("ID PERGUNTA: " + conhecimentosGerais.numPergunta);
-    ++conhecimentosGerais.numPergunta;
-  }
 
 // ###################### BOTÃO PROXIMA PERGUNTA ######################
 //1 - Iniciar quiz sem a imagem, resposta e mensagem de acerto;

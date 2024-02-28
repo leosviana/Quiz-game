@@ -53,16 +53,17 @@ const conhecimentosGerais = [
 
 
 // ###################### INICIAR SEM OS ELEMENTOS ######################
-proximo.style.display = "none"; //Esconder o botao proximo
+//proximo.style.display = "none"; //Esconder o botao proximo
 
 // ###################### VARIAVEIS GLOBAIS DO PROJETO ######################
 //QUIZ
 var caixaQuiz = document.getElementById("caixa-quiz");
-var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + conhecimentosGerais[1].numQuiz; //Número do quiz
+var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + conhecimentosGerais[0].numQuiz; //Número do quiz
 
 //PERGUNTA
-var idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[1].numPergunta; //Número da pergunta
-var pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[1].pergunta; //Descrição da pergunta
+var idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[0].numPergunta; //Número da pergunta
+var pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[0].pergunta; //Descrição da pergunta
+var contPergunta = 0; //Contador de perguntas
 
 //OPÇÕES
 var statusOpA = "desmarcado"; //Iniciar status das opções como desmarcada
@@ -70,18 +71,19 @@ var statusOpB = "desmarcado"; // --
 var statusOpC = "desmarcado"; // --
 var caixaOpcoes = document.getElementById("caixa-opcoes");
 var opA = document.getElementById("op-a"); //Declarando elemento HTML no JS -> opção A
-opA.innerHTML = conhecimentosGerais[1].opa;   //Conteudo do objeto da opção A
+opA.innerHTML = conhecimentosGerais[0].opa;   //Conteudo do objeto da opção A
 var opB = document.getElementById("op-b"); //Declarando elemento HTML no JS -> Opção B
-opB.innerHTML = conhecimentosGerais[1].opb;   //Conteudo do objeto da opção B
+opB.innerHTML = conhecimentosGerais[0].opb;   //Conteudo do objeto da opção B
 var opC = document.getElementById("op-c"); //Declarando elemento HTML no JS -> Opção C
-opC.innerHTML = conhecimentosGerais[1].opc;   //Conteudo do objeto da opção C
-var opCorreta = conhecimentosGerais[1].opcorreta; //Conteudo do objeto da opção Correta
+opC.innerHTML = conhecimentosGerais[0].opc;   //Conteudo do objeto da opção C
+var opCorreta = conhecimentosGerais[0].opcorreta; //Conteudo do objeto da opção Correta
 
 //MENSAGEM
 var novaMsg; //Declarando variável de nova mensagem;
 
-//RESPOSTA
+//BOTÕES
 var responder = document.getElementById("responder"); //Declarando botão responder do HTML
+var proximo = document.getElementById("proximo"); //Declarando botão proximo do HTML
 
 // ###################### BOTÃO DE OPÇÕES ######################
 //1 - Quando selecionar uma opção, dar um status de “marcado”;
@@ -175,12 +177,13 @@ function btResponder(){ //Botão Responder
     opB.disabled = "true"; //Travar botão "Opção B"
     opC.disabled = "true"; //Travar botão "Opção C"
     opcaoCorreta(); //Verificar se a resposta está correta
-    exibirResposta(conhecimentosGerais.imgResp, conhecimentosGerais.explicacao); //Exibir imagem e explicação da resposta
+    exibirResposta(conhecimentosGerais[0].imgResp, conhecimentosGerais[0].explicacao); //Exibir imagem e explicação da resposta
 
-    console.log("ID QUIZ: " + conhecimentosGerais[1].numQuiz);
-    console.log("ID PERGUNTA: " + conhecimentosGerais[1].numPergunta);
-    ++conhecimentosGerais[1].numPergunta;
+    console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
+    console.log("ID PERGUNTA: " + conhecimentosGerais[0].numPergunta);
+    ++conhecimentosGerais[0].numPergunta;
   }
+}
 
 function novaMensagem(msg){ //Criar nova mensagem
   //Criar elemento HTML <div class="mensagem" id="mensagem"> nova mensagem aqui </div>
@@ -271,14 +274,16 @@ function exibirResposta(img, explic){
 //7 - Limpar status das opções selecionadas (a, b ou c);
 //8 - Se clicar no botão "responder", faz todo processo do botão "responder" novamente
 
-function btProximo(){
-  var  contPergunta;
+function btProximo(){  
+  console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
+  console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
   
+  //Excluindo resposta
+  caixaOpcoes.removeChild(caixaQuiz.caixaResposta);
+  divImg.removeChild(caixaQuiz.imgResposta);
+  divImg.removeChild(caixaQuiz.msgExplicacao);
 
-  ++contPergunta;
-
-
-
+  contPergunta++;
 }
 
   //escrever em atributos id:
@@ -289,14 +294,3 @@ function btProximo(){
 
   //remover atributos:
   //https://www.w3schools.com/js/js_htmldom_document.asp
-
-
-
-
-
-}
-
-
-
-
-

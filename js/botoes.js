@@ -34,7 +34,7 @@ const conhecimentosGerais = [
     opb: "Opção B parara",
     opc: "Opção C parara",
     opcorreta: "Opção A parara",
-    imgResp: "/img/img_teste.png",
+    imgResp: "/img/Pergunta_1.png",
     explicacao: "Parara....",
   },
   {
@@ -45,7 +45,7 @@ const conhecimentosGerais = [
     opb: "Opção B perere",
     opc: "Opção C perere",
     opcorreta: "Opção C perere",
-    imgResp: "/img/img_teste.png",
+    imgResp: "/img/Pergunta_2.png",
     explicacao: "Perere....",
   }
   ,
@@ -57,7 +57,7 @@ const conhecimentosGerais = [
     opb: "Opção B piriri",
     opc: "Opção C piriri",
     opcorreta: "Opção B piriri",
-    imgResp: "/img/img_teste.png",
+    imgResp: "/img/Pergunta_3.png",
     explicacao: "Piriri....",
   }
 ]
@@ -179,7 +179,7 @@ function btResponder(){ //Botão Responder
     opB.disabled = true; //Desabilitar botão "Opção B"
     opC.disabled = true; //Desabilitar botão "Opção C"
     opcaoCorreta(); //Verificar se a resposta está correta
-    exibirResposta(conhecimentosGerais[0].imgResp, conhecimentosGerais[0].explicacao); //Exibir imagem e explicação da resposta
+    exibirResposta(conhecimentosGerais[contPergunta].imgResp, conhecimentosGerais[contPergunta].explicacao); //Exibir imagem e explicação da resposta
 
     //console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
     //console.log("ID PERGUNTA: " + conhecimentosGerais[0].numPergunta);

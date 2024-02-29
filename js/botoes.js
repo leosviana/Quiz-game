@@ -29,7 +29,7 @@ const conhecimentosGerais = [
   {
     numQuiz: 1,
     numPergunta: 1,
-    pergunta: "Qual é tarara...",
+    pergunta: "Qual é parara...",
     opa: "Opção A parara",
     opb: "Opção B parara",
     opc: "Opção C parara",
@@ -47,6 +47,18 @@ const conhecimentosGerais = [
     opcorreta: "Opção C perere",
     imgResp: "/img/img_teste.png",
     explicacao: "Perere....",
+  }
+  ,
+  {
+    numQuiz: 1,
+    numPergunta: 3,
+    pergunta: "Qual é piriri...",
+    opa: "Opção A piriri",
+    opb: "Opção B piriri",
+    opc: "Opção C piriri",
+    opcorreta: "Opção B piriri",
+    imgResp: "/img/img_teste.png",
+    explicacao: "Piriri....",
   }
 ]
 
@@ -169,9 +181,9 @@ function btResponder(){ //Botão Responder
     opcaoCorreta(); //Verificar se a resposta está correta
     exibirResposta(conhecimentosGerais[0].imgResp, conhecimentosGerais[0].explicacao); //Exibir imagem e explicação da resposta
 
-    console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
-    console.log("ID PERGUNTA: " + conhecimentosGerais[0].numPergunta);
-    ++conhecimentosGerais[0].numPergunta;
+    //console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
+    //console.log("ID PERGUNTA: " + conhecimentosGerais[0].numPergunta);
+    //++conhecimentosGerais[0].numPergunta;
   }
 }
 
@@ -272,6 +284,8 @@ function btProximo(){
   opA.innerHTML = conhecimentosGerais[contPergunta].opa; //Conteudo do objeto da opção A
   opB.innerHTML = conhecimentosGerais[contPergunta].opb; //Conteudo do objeto da opção B
   opC.innerHTML = conhecimentosGerais[contPergunta].opc; //Conteudo do objeto da opção C
+  //Opção correta da proxima pergunta
+  opCorreta = conhecimentosGerais[contPergunta].opcorreta; //Conteudo do objeto da opção Correta
   //Habilitando as opções novamente
   opA.disabled = false; //Habilitar botão "Opção A"
   opB.disabled = false; //Habilitar botão "Opção B"
@@ -280,7 +294,7 @@ function btProximo(){
   statusOpA = "desmarcado";
   statusOpB = "desmarcado";
   statusOpC = "desmarcado";
-  //Mudando a cor par azul novamente
+  //Mudando a cor para azul novamente
   opA.style.backgroundColor = "blue";
   opB.style.backgroundColor = "blue";
   opC.style.backgroundColor = "blue";

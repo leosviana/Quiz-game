@@ -369,8 +369,9 @@ function btProximo(){
     divPontuacao.id = "pontuacao";
     divPontuacao.className = "pontuacao";
     caixaQuiz.appendChild(divPontuacao);
-    divPontuacao.insertAdjacentElement('afterend', caixaOpcoes);
-    divPontuacao.innerHTML = "PARABÉNS!! Você acertou " + pontuacao + " perguntas.";
+    divPontuacao.insertAdjacentElement('afterend', idQuiz);
+    divPontuacao.innerHTML = "PARABÉNS!!<br>";
+    divPontuacao.innerHTML = "Você acertou " + pontuacao + " perguntas.";
     console.log("PARABÉNS!! Você acertou " + pontuacao + " perguntas.");
   }else{  
   idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[contPergunta].numPergunta; //Número da pergunta 

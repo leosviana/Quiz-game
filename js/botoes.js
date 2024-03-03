@@ -359,14 +359,19 @@ function exibirResposta(img, explic){
 function btProximo(){ 
   contPergunta++;  
 
-    if (contPergunta > conhecimentosGerais.length -1){
-      caixaOpcoes.removeChild(novaMsg);
-      caixaQuiz.removeChild(idQuiz);
-      caixaQuiz.removeChild(caixaPergunta);
-      caixaQuiz.removeChild(caixaOpcoes);
-      caixaQuiz.removeChild(caixaResposta);
+  if (contPergunta > conhecimentosGerais.length -1){
+    caixaOpcoes.removeChild(novaMsg);
+    caixaQuiz.removeChild(caixaPergunta);
+    caixaQuiz.removeChild(caixaOpcoes);
+    caixaQuiz.removeChild(caixaResposta);
 
-      console.log("PARABÉNS!! Você acertou " + pontuacao + " perguntas.");
+    divPontuacao = document.createElement("div");
+    divPontuacao.id = "pontuacao";
+    divPontuacao.className = "pontuacao";
+    caixaQuiz.appendChild(divPontuacao);
+    divPontuacao.insertAdjacentElement('afterend', caixaOpcoes);
+    divPontuacao.innerHTML = "PARABÉNS!! Você acertou " + pontuacao + " perguntas.";
+    console.log("PARABÉNS!! Você acertou " + pontuacao + " perguntas.");
   }else{  
   idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[contPergunta].numPergunta; //Número da pergunta 
   pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[contPergunta].pergunta; //Descrição da pergunta

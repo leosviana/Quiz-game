@@ -144,6 +144,7 @@ var caixaQuiz = document.getElementById("caixa-quiz");
 var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + conhecimentosGerais[0].numQuiz; //Número do quiz
 
 //PERGUNTA
+var caixaPergunta = document.getElementById("caixa-pergunta");
 var idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[0].numPergunta; //Número da pergunta
 var pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[0].pergunta; //Descrição da pergunta
 var contPergunta = 0; //Contador de perguntas
@@ -168,6 +169,9 @@ var novaMsg; //Declarando variável de nova mensagem;
 var responder = document.getElementById("responder"); //Declarando botão responder do HTML
 var proximo = document.getElementById("proximo"); //Declarando botão proximo do HTML
 proximo.style.display = "none"; //Iniciar escondendo o botao proximo
+
+//PONTUACAÇÃO
+var pontuacao = 0;
 
 // ###################### BOTÃO DE OPÇÕES ######################
 //1 - Quando selecionar uma opção, dar um status de “marcado”;
@@ -282,6 +286,8 @@ function opcaoCorreta(){ //Validar opção correta
       (statusOpC == "marcado" && opC.innerHTML == opCorreta)){
       msg = "Resposta certa!";
       novaMensagem(msg); //Exibir mensagem em tela
+      pontuacao++;
+      console.log(pontuacao + " pontos!");
   }else{
     msg = "Resposta errada.";
     novaMensagem(msg); //Exibir mensagem em tela
@@ -351,11 +357,18 @@ function exibirResposta(img, explic){
 //8 - Se clicar no botão "responder", faz todo processo do botão "responder" novamente
 
 function btProximo(){ 
-  contPergunta++; 
-  console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
-  console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
+  contPergunta++;  
 
-  idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[contPergunta].numPergunta; //Número da pergunta
+    if (contPergunta > conhecimentosGerais.length -1){
+      caixaOpcoes.removeChild(novaMsg);
+      caixaQuiz.removeChild(idQuiz);
+      caixaQuiz.removeChild(caixaPergunta);
+      caixaQuiz.removeChild(caixaOpcoes);
+      caixaQuiz.removeChild(caixaResposta);
+
+      console.log("PARABÉNS!! Você acertou " + pontuacao + " perguntas.");
+  }else{  
+  idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[contPergunta].numPergunta; //Número da pergunta 
   pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[contPergunta].pergunta; //Descrição da pergunta
   opA.innerHTML = conhecimentosGerais[contPergunta].opa; //Conteudo do objeto da opção A
   opB.innerHTML = conhecimentosGerais[contPergunta].opb; //Conteudo do objeto da opção B
@@ -381,9 +394,10 @@ function btProximo(){
   //Ocultar botão "Proximo"
   proximo.style.display = "none";
   //Exibir botão "Responder"
-  responder.style.display = "block";
-  
-  
+  responder.style.display = "block";  
 
-  
+  console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
+  console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
+  }
+
 }

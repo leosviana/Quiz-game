@@ -154,7 +154,7 @@ header{
     height: 40px; 
 }
 
-.botao-responder, .botao-proximo{
+.botao-responder, .botao-proximo, .botao-resetar{
     width: 30%;
     margin: 5px 0px 5px 0px;
     /*background-color: #006c97;*/
@@ -171,16 +171,16 @@ header{
     margin: auto; /* Isso centraliza verticalmente o botão */ 
 }
 
-.botao-responder:hover, .botao-proximo:hover{ /* Ao passar o mouse */
+.botao-responder:hover, .botao-proximo:hover, .botao-resetar{ /* Ao passar o mouse */
     background-color: #006c97; /* Muda a cor do botão */
     color: white; /* Muda a cor do texto */
     cursor: pointer;
 }
 
 .pontuacao{
-    background-color: rgb(204, 255, 203);
-    border-radius: 5px;
-    width: 100%;
+    background-color: rgb(6, 255, 2);
+    border-radius: 5px;    
     padding: 5px;
+    margin: 5px;
     text-align: center;
 }

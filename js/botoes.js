@@ -141,7 +141,8 @@ const conhecimentosGerais = [
 // ###################### VARIAVEIS GLOBAIS DO PROJETO ######################
 //QUIZ
 var caixaQuiz = document.getElementById("caixa-quiz");
-var idQuiz = document.getElementById("id-quiz").innerHTML = "QUIZ " + conhecimentosGerais[0].numQuiz; //Número do quiz
+var idQuiz = document.getElementById("id-quiz");
+idQuiz.innerHTML = "QUIZ " + conhecimentosGerais[0].numQuiz; //Número do quiz
 
 //PERGUNTA
 var caixaPergunta = document.getElementById("caixa-pergunta");
@@ -166,6 +167,7 @@ var opCorreta = conhecimentosGerais[0].opcorreta; //Conteudo do objeto da opçã
 var novaMsg; //Declarando variável de nova mensagem;
 
 //BOTÕES
+var caixaBotao = document.getElementById("caixa-botao");
 var responder = document.getElementById("responder"); //Declarando botão responder do HTML
 var proximo = document.getElementById("proximo"); //Declarando botão proximo do HTML
 proximo.style.display = "none"; //Iniciar escondendo o botao proximo
@@ -360,19 +362,8 @@ function btProximo(){
   contPergunta++;  
 
   if (contPergunta > conhecimentosGerais.length -1){
-    caixaOpcoes.removeChild(novaMsg);
-    caixaQuiz.removeChild(caixaPergunta);
-    caixaQuiz.removeChild(caixaOpcoes);
-    caixaQuiz.removeChild(caixaResposta);
-
-    divPontuacao = document.createElement("div");
-    divPontuacao.id = "pontuacao";
-    divPontuacao.className = "pontuacao";
-    caixaQuiz.appendChild(divPontuacao);
-    divPontuacao.insertAdjacentElement('afterend', idQuiz);
-    divPontuacao.innerHTML = "PARABÉNS!!<br>";
-    divPontuacao.innerHTML = "Você acertou " + pontuacao + " perguntas.";
-    console.log("PARABÉNS!! Você acertou " + pontuacao + " perguntas.");
+    pontuacaoGeral();
+    resetarPerguntas();
   }else{  
   idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[contPergunta].numPergunta; //Número da pergunta 
   pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[contPergunta].pergunta; //Descrição da pergunta
@@ -406,4 +397,35 @@ function btProximo(){
   console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
   }
 
+}
+
+function pontuacaoGeral(){
+  //Remover elementos da tela
+  caixaOpcoes.removeChild(novaMsg);
+  caixaQuiz.removeChild(caixaPergunta);
+  caixaQuiz.removeChild(caixaOpcoes);
+  caixaQuiz.removeChild(caixaResposta);
+  //Criando elemento de pontuação na tela
+  divPontuacao = document.createElement("div");
+  divPontuacao.id = "pontuacao";
+  divPontuacao.className = "pontuacao";
+  caixaQuiz.appendChild(divPontuacao);
+  divPontuacao.insertAdjacentElement('afterend', caixaBotao);
+  divPontuacao.innerHTML = "PARABÉNS!!<br>" +
+                           "Você acertou " + pontuacao + " perguntas.";
+  console.log("PARABÉNS!! Você acertou " + pontuacao + " perguntas.");
+}
+
+function btResetar(){
+  contPergunta = -1;
+  btProximo();
+}
+
+function resetarPerguntas(){
+  botaoResetar = document.createElement("div");
+  botaoResetar.id = "botao-resetar";
+  botaoResetar.className = "botao-resetar";
+  botaoResetar.onclick = btResetar();
+  caixaBotao.appendChild(botaoResetar);
+  caixaBotao.insertAdjacentElement('beforeend', botaoResetar);
 }

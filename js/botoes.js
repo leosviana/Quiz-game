@@ -417,15 +417,18 @@ function pontuacaoGeral(){
 }
 
 function btResetar(){
-  contPergunta = -1;
-  btProximo();
-}
 
-function resetarPerguntas(){
+
   botaoResetar = document.createElement("div");
   botaoResetar.id = "botao-resetar";
   botaoResetar.className = "botao-resetar";
   botaoResetar.onclick = btResetar();
   caixaBotao.appendChild(botaoResetar);
   caixaBotao.insertAdjacentElement('beforeend', botaoResetar);
+}
+
+function resetarPerguntas(){
+  contPergunta = -1;
+  btResetar()
+  btProximo();
 }

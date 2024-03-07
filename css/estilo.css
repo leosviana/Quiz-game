@@ -79,7 +79,7 @@ header{
     /*border: 1px solid black;*/
     padding: 5px;
     border-radius: 50px;
-    background-color: #006c97;
+    background-color: #004AAD;
     color: white;        
     text-align: center;
     width: 30px;
@@ -94,7 +94,7 @@ header{
 }
 
 .op{
-    background-color: rgb(131, 160, 255);
+    background-image: linear-gradient(to right, #5DE0E6 0%, #004AAD 100%);
     border: 1px solid #006c97;
     border-radius: 5px;
     padding: 5px;
@@ -105,19 +105,31 @@ header{
     font-size: 16px;
 }
 
-.mensagem{
+.op:disabled{
+    opacity: 1;
+    cursor: default;
+}
+
+.resposta-certa{
     background-color: #00ff00;
     /*border: 1px solid black;*/
     padding: 2px;
     margin: 5px 0px 5px 0px;
+    cursor: default;
+}
+
+.resposta-errada{
+    background-color: #ff0000;
+    /*border: 1px solid black;*/
+    padding: 2px;
+    margin: 5px 0px 5px 0px;
+    cursor: default;
 }
 
 .caixa-resposta{
-    /*background-color: rgb(0, 255, 0);*/
-    /*border: 1px solid black;*/
     margin: 2px 0px 2px 0px;
     display: flex;
-    flex-wrap: nowrap;  /* nowrap / wrap?? */
+    flex-wrap: nowrap; /* nowrap / wrap?? */
     height: auto; /* Altura automatica da caixa de resposta */  
     padding: 1%;       
 }

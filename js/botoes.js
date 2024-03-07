@@ -151,7 +151,8 @@ opC.innerHTML = conhecimentosGerais[0].opc;   //Conteudo do objeto da opção C
 var opCorreta = conhecimentosGerais[0].opcorreta; //Conteudo do objeto da opção Correta
 var corVerde = "linear-gradient(to right, #00ff00 0%, #44ff3d 100%)"; //Cor gradiente verde
 var corAzul =  "linear-gradient(to right, #5DE0E6 0%, #004AAD 100%)"; //Cor gradiente azul
-var corVermelha = "linear-gradient(to right, #ff0d0d 0%, #690000 100%)"; // Cor gradiente vermelha
+var corAzulEscuro = "linear-gradient(to right, #004AAD 0%, #004AAD 100%)"; //Cor azul escuro
+var corVermelha = "linear-gradient(to right, #ff0d0d 0%, #aa0000 100%)"; // Cor gradiente vermelha
 var corAmarelo = "#FFED00";
 
 //MENSAGEM
@@ -178,7 +179,7 @@ document.querySelectorAll('.op').forEach(function(botao){
       
     switch (idDoBotao){ // Executa ação com base no ID do botão
       case 'op-a': //Caso clique no botão da opção A             
-        opA.style.backgroundImage = corVerde;
+        opA.style.backgroundImage = corAzulEscuro;
         opB.style.backgroundImage = corAzul;
         opC.style.backgroundImage = corAzul;
         statusOpA = "marcado";
@@ -188,7 +189,7 @@ document.querySelectorAll('.op').forEach(function(botao){
         break;
       case 'op-b': //Caso clique no botão da opção B
         opA.style.backgroundImage = corAzul;
-        opB.style.backgroundImage = corVerde;
+        opB.style.backgroundImage = corAzulEscuro;
         opC.style.backgroundImage = corAzul;
         statusOpA = "desmarcado";
         statusOpB = "marcado";
@@ -198,7 +199,7 @@ document.querySelectorAll('.op').forEach(function(botao){
       case 'op-c': //Caso clique no botão da opção C
         opA.style.backgroundImage = corAzul;
         opB.style.backgroundImage = corAzul;
-        opC.style.backgroundImage = corVerde;
+        opC.style.backgroundImage = corAzulEscuro;
         statusOpA = "desmarcado";
         statusOpB = "desmarcado";
         statusOpC = "marcado";
@@ -248,7 +249,7 @@ function btResponder(){ //Botão Responder
   }else{ //Se o status de uma das opções já estiver como "marcada", então:
     responder.style.display = "none"; //Oculta o botão "responder"
     proximo.style.display = "block"; //Mostra o botão "próximo"
-    opA.disabled = true; //Desabilitar botão "Opção A"
+    opA.disabled = true; //Desabilitar botão "Opção A"    
     opB.disabled = true; //Desabilitar botão "Opção B"
     opC.disabled = true; //Desabilitar botão "Opção C"
     opcaoCorreta(); //Verificar se a resposta está correta
@@ -262,8 +263,12 @@ function btResponder(){ //Botão Responder
 function novaMensagem(msg){ //Criar nova mensagem
   //Criar elemento HTML <div class="mensagem" id="mensagem"> nova mensagem aqui </div>
   novaMsg = document.createElement("div"); //Criando novo elemento "div"
+  if (msg == "Resposta certa!"){ //Se a resposta for certa:
+    novaMsg.className = "resposta-certa"; //Mostra a cor de fundo verde conforme definido no CSS
+  }else{ //Se a resposta for errada:
+    novaMsg.className = "resposta-errada"; //Mostra a cor de fundo vermelha conforme definido no CSS
+  }
   novaMsg.id = "mensagem"; //id = "mensagem"
-  novaMsg.className = "mensagem"; //class = "mensagem"
   novaMsg.innerHTML = msg; //Carregar e exibir mensagem
   caixaQuiz.appendChild(novaMsg); //Criar como filha abaixo da div "caixa-quiz"
   caixaOpcoes.insertAdjacentElement('beforeend', novaMsg); //Inserindo elemento dentro da div "caixa-opcoes" mas ao final
@@ -277,7 +282,7 @@ function opcaoCorreta(){ //Validar opção correta
       //Se opção C estiver marcada E opção C for igual Opção correta
       (statusOpC == "marcado" && opC.innerHTML == opCorreta)){
       msg = "Resposta certa!";
-      novaMensagem(msg); //Exibir mensagem em tela
+      novaMensagem(msg); //Exibir mensagem em tela      
       pontuacao++; //Adiciona +1 na pontuação
       console.log(pontuacao + " pontos!");
   }else{

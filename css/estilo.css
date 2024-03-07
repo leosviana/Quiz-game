@@ -50,11 +50,11 @@ header{
 }
 
 .id-quiz{
-    background-color: rgb(229, 255, 0);
-    border: 1px solid yellow;
+    background-color: #FFED00;
+    border: 1px solid #c0b300;
     display: flex;
     flex-wrap: nowrap;
-    /*padding-bottom: 0px;*/
+    padding: 2px;
     margin: 0px 0px 10px 0px;
     border-radius: 10px;
 }

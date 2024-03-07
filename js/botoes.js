@@ -11,19 +11,6 @@
   }
 }*/
 
-//OBJETO COMUM PERGUNTA TESTE
-/*const conhecimentosGerais = { //Criando objeto Quiz - Pergunta 1
-    numQuiz: 1,
-    numPergunta: 1,
-    pergunta: "Qual é tarara...", //Pergunta
-    opa: "Opção A",               //Opção A
-    opb: "Opção B",               //Opção B
-    opc: "Opção C",               //Opção C
-    opcorreta: "Opção A",         //Opção Correta
-    imgResp: "/img/img_teste.png",
-    explicacao: "Piririri...",      //Resposta
-}*/
-
 //ARRAY DE OBJETO PERGUNTA TESTE
 const conhecimentosGerais = [
   {
@@ -162,6 +149,13 @@ opB.innerHTML = conhecimentosGerais[0].opb;   //Conteudo do objeto da opção B
 var opC = document.getElementById("op-c"); //Declarando elemento HTML no JS -> Opção C
 opC.innerHTML = conhecimentosGerais[0].opc;   //Conteudo do objeto da opção C
 var opCorreta = conhecimentosGerais[0].opcorreta; //Conteudo do objeto da opção Correta
+var corVerde = "#44FF3D";
+var corAmarelo = "#FFED00";
+var corAzul =  "linear-gradient(to right, red, yellow)";
+// corVerde.style.backgroundColor = "#44FF3D";
+//corAmarelo.style.backgroundColor = "#FFED00";
+//corAzul.style.backgroundColor = `linear-gradient(90deg, #5DE0E6, #004AAD)`;
+
 
 //MENSAGEM
 var novaMsg; //Declarando variável de nova mensagem;
@@ -187,9 +181,9 @@ document.querySelectorAll('.op').forEach(function(botao){
       
     switch (idDoBotao){ // Executa ação com base no ID do botão
       case 'op-a': //Caso clique no botão da opção A             
-        opA.style.backgroundColor = "green";
-        opB.style.backgroundColor = "blue";
-        opC.style.backgroundColor = "blue";
+        opA.style.backgroundColor = corVerde;
+        opB.style.backgroundColor = corAzul;
+        opC.style.backgroundColor = corAzul;
         statusOpA = "marcado";
         statusOpB = "desmarcado";
         statusOpC = "desmarcado";
@@ -216,8 +210,8 @@ document.querySelectorAll('.op').forEach(function(botao){
       default:
         console.log("Botão não reconhecido");
     }
-    if (caixaQuiz.contains(novaMsg)){ //Se conter mensagem criada
-      caixaOpcoes.removeChild(novaMsg); //Remover mensagem
+    if (caixaQuiz.contains(novaMsg)){   //Se conter mensagem criada, então:
+      caixaOpcoes.removeChild(novaMsg); //Remove mensagem
     }    
   });
 });
@@ -230,17 +224,17 @@ document.querySelectorAll('.op').forEach(function(botao){
 //    3.1.1 - Se sim, continuar processo normal;
 //    3.1.2 - Se não, exibir mensagem para selecionar uma opção pelo menos;
 //    3.1.3 - Ao selecionar opção, excluir mensagem;
-//3.2 - Travar os botões de opção para não ser mais clicados;
-//3.3 - Esconder o botão Responder”;
-//3.4 - Mostrar o botão “Próximo” (Próxima pergunta);
-//3.5 - Precisa armazenar qual opção foi selecionada (a, b ou c);
-//3.6 - Verificar se a opção selecionada é igual a opção correta da pergunta;
-//  3.6.1 - Se sim, exibir que o usuário acertou a resposta;
-//  3.6.2 - Se não, exibir que o usuário errou a resposta;
-//  3.6.3 - Mudar cor da opção selecionada para vermelha;
-//  3.6.4 - Mudar cor da opção correta para verde;
-//  3.6.5 - A opção que sobrar deixa de azul;
-//3.7 - Mostrar a imagem e a explicação ao usuário;
+//  3.2 - Travar os botões de opção para não ser mais clicados
+//  3.3 - Esconder o botão Responder”;
+//  3.4 - Mostrar o botão “Próximo” (Próxima pergunta);
+//  3.5 - Precisa armazenar qual opção foi selecionada (a, b ou c);
+//  3.6 - Verificar se a opção selecionada é igual a opção correta da pergunta;
+//    3.6.1 - Se sim, exibir que o usuário acertou a resposta;
+//    3.6.2 - Se não, exibir que o usuário errou a resposta;
+//    3.6.3 - Mudar cor da opção selecionada para vermelha;
+//    3.6.4 - Mudar cor da opção correta para verde;
+//    3.6.5 - A opção que sobrar deixa de azul;
+//  3.7 - Mostrar a imagem e a resposta ao usuário;
 
 function btResponder(){ //Botão Responder
   //Verifica se uma das opções foram selecionadas

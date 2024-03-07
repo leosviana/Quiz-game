@@ -149,13 +149,10 @@ opB.innerHTML = conhecimentosGerais[0].opb;   //Conteudo do objeto da opção B
 var opC = document.getElementById("op-c"); //Declarando elemento HTML no JS -> Opção C
 opC.innerHTML = conhecimentosGerais[0].opc;   //Conteudo do objeto da opção C
 var opCorreta = conhecimentosGerais[0].opcorreta; //Conteudo do objeto da opção Correta
-var corVerde = "#44FF3D";
+var corVerde = "linear-gradient(to right, #00ff00 0%, #44ff3d 100%)"; //Cor gradiente verde
+var corAzul =  "linear-gradient(to right, #5DE0E6 0%, #004AAD 100%)"; //Cor gradiente azul
+var corVermelha = "linear-gradient(to right, #ff0d0d 0%, #690000 100%)"; // Cor gradiente vermelha
 var corAmarelo = "#FFED00";
-var corAzul =  "linear-gradient(to right, red, yellow)";
-// corVerde.style.backgroundColor = "#44FF3D";
-//corAmarelo.style.backgroundColor = "#FFED00";
-//corAzul.style.backgroundColor = `linear-gradient(90deg, #5DE0E6, #004AAD)`;
-
 
 //MENSAGEM
 var novaMsg; //Declarando variável de nova mensagem;
@@ -181,27 +178,27 @@ document.querySelectorAll('.op').forEach(function(botao){
       
     switch (idDoBotao){ // Executa ação com base no ID do botão
       case 'op-a': //Caso clique no botão da opção A             
-        opA.style.backgroundColor = corVerde;
-        opB.style.backgroundColor = corAzul;
-        opC.style.backgroundColor = corAzul;
+        opA.style.backgroundImage = corVerde;
+        opB.style.backgroundImage = corAzul;
+        opC.style.backgroundImage = corAzul;
         statusOpA = "marcado";
         statusOpB = "desmarcado";
         statusOpC = "desmarcado";
         console.log("a) " + statusOpA + " | b) " + statusOpB + " | c) " + statusOpC);
         break;
       case 'op-b': //Caso clique no botão da opção B
-        opA.style.backgroundColor = "blue";
-        opB.style.backgroundColor = "green";
-        opC.style.backgroundColor = "blue";
+        opA.style.backgroundImage = corAzul;
+        opB.style.backgroundImage = corVerde;
+        opC.style.backgroundImage = corAzul;
         statusOpA = "desmarcado";
         statusOpB = "marcado";
         statusOpC = "desmarcado";
         console.log("a) " + statusOpA + " | b) " + statusOpB + " | c) " + statusOpC);
         break;
       case 'op-c': //Caso clique no botão da opção C
-        opA.style.backgroundColor = "blue";
-        opB.style.backgroundColor = "blue";
-        opC.style.backgroundColor = "green";
+        opA.style.backgroundImage = corAzul;
+        opB.style.backgroundImage = corAzul;
+        opC.style.backgroundImage = corVerde;
         statusOpA = "desmarcado";
         statusOpB = "desmarcado";
         statusOpC = "marcado";
@@ -288,28 +285,28 @@ function opcaoCorreta(){ //Validar opção correta
     novaMensagem(msg); //Exibir mensagem em tela    
     //Opção A == "marcado" E Opção B == Correta >> A == vermelho e B == verde
     if(statusOpA == "marcado" && opB.innerHTML == opCorreta){
-      opA.style.backgroundColor = "red";
-      opB.style.backgroundColor = "green";
+      opA.style.backgroundImage = corVermelha;
+      opB.style.backgroundImage = corVerde;
     //Opção A == "marcado" E Opção C == Correta >> A == vermelho e C == verde
     }else if(statusOpA == "marcado" && opC.innerHTML == opCorreta){
-      opA.style.backgroundColor = "red";
-      opC.style.backgroundColor = "green";
+      opA.style.backgroundImage = corVermelha;
+      opC.style.backgroundImage = corVerde;
     //Opção B == "marcado" E Opção A == Correta >> B == vermelho e A == verde
     }else if(statusOpB == "marcado" && opA.innerHTML == opCorreta){
-      opB.style.backgroundColor = "red";
-      opA.style.backgroundColor = "green";
+      opB.style.backgroundImage = corVermelha;
+      opA.style.backgroundImage = corVerde;
     //Opção B == "marcado" E Opção C == Correta >> B == vermelho e C == verde
     }else if(statusOpB == "marcado" && opC.innerHTML == opCorreta){
-      opB.style.backgroundColor = "red";
-      opC.style.backgroundColor = "green";
+      opB.style.backgroundImage = corVermelha;
+      opC.style.backgroundImage = corVerde;
     //Opção C == "marcado" E Opção A == Correta >> C == vermelho e A == verde
     }else if(statusOpC == "marcado" && opA.innerHTML == opCorreta){
-      opC.style.backgroundColor = "red";
-      opA.style.backgroundColor = "green";
+      opC.style.backgroundImage = corVermelha;
+      opA.style.backgroundImage = corVerde;
     //Opção C == "marcado" E Opção B == Correta >> C == vermelho e B == verde
     }else if(statusOpC == "marcado" && opB.innerHTML == opCorreta){
-      opC.style.backgroundColor = "red";
-      opB.style.backgroundColor = "green";
+      opC.style.backgroundImage = corVermelha;
+      opB.style.backgroundImage = corVerde;
     }     
   }
 }
@@ -373,9 +370,9 @@ function btProximo(){
   statusOpB = "desmarcado";
   statusOpC = "desmarcado";
   //Mudando a cor para azul novamente
-  opA.style.backgroundColor = "blue";
-  opB.style.backgroundColor = "blue";
-  opC.style.backgroundColor = "blue";  
+  opA.style.backgroundImage = corAzul;
+  opB.style.backgroundImage = corAzul;
+  opC.style.backgroundImage = corAzul;  
   if (caixaQuiz.contains(novaMsg)){       //Se existe mensagem, então:
     caixaOpcoes.removeChild(novaMsg);     //Exclui mensagem    
     caixaQuiz.removeChild(caixaResposta); //Exclui resposta

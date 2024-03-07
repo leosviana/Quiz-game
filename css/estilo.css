@@ -84,6 +84,7 @@ header{
     text-align: center;
     width: 30px;
     height: 30px;
+    font-weight: bold; 
 }
 
 .pergunta{
@@ -129,9 +130,9 @@ header{
 .caixa-resposta{
     margin: 2px 0px 2px 0px;
     display: flex;
-    flex-wrap: nowrap; /* nowrap / wrap?? */
+    flex-wrap: wrap; /* nowrap / wrap?? */    
     height: auto; /* Altura automatica da caixa de resposta */  
-    padding: 1%;       
+    padding: 1%; 
 }
 
 .img-resposta{
@@ -166,21 +167,20 @@ header{
     height: 40px; 
 }
 
-.botao-responder, .botao-proximo, .botao-resetar{
-    width: 30%;
+.botao-responder, .botao-proximo, .botao-resetar{    
+    width: auto;
     margin: 5px 0px 5px 0px;
-    /*background-color: #006c97;*/
+    padding: 6px;
     background-color: white;
     color: black;
-    /*border: none; /* Sem borda em toda div */
     border: 2px solid #006c97;
     border-radius: 5px; /* Pontas das div arredondadas */
-    font-size: 1rem;
-    /*box-shadow: 2px 2px 4px black; /* Sombra na div: Direita / Embaixo / Sombra / Cor */
+    font-size: 1rem;    
     transition-duration: 0.4s; /* Tempo de transição ao passar o mouse */
     cursor: pointer;
     flex: 0 0 auto; /* Não cresce, não encolhe, tamanho automático */
     margin: auto; /* Isso centraliza verticalmente o botão */ 
+    /*box-shadow: 2px 2px 4px black; /* Sombra na div: Direita / Embaixo / Sombra / Cor */
 }
 
 .botao-responder:hover, .botao-proximo:hover, .botao-resetar:hover{ /* Ao passar o mouse */

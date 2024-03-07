@@ -171,7 +171,7 @@ header{
     margin: auto; /* Isso centraliza verticalmente o botão */ 
 }
 
-.botao-responder:hover, .botao-proximo:hover, .botao-resetar{ /* Ao passar o mouse */
+.botao-responder:hover, .botao-proximo:hover, .botao-resetar:hover{ /* Ao passar o mouse */
     background-color: #006c97; /* Muda a cor do botão */
     color: white; /* Muda a cor do texto */
     cursor: pointer;

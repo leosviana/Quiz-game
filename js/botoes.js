@@ -263,9 +263,8 @@ function btResponder(){ //Botão Responder
     opcaoCorreta(); //Verificar se a resposta está correta
     exibirResposta(conhecimentosGerais[contPergunta].imgResp, conhecimentosGerais[contPergunta].explicacao); //Exibir imagem e explicação da resposta
 
-    //console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
-    //console.log("ID PERGUNTA: " + conhecimentosGerais[0].numPergunta);
-    //++conhecimentosGerais[0].numPergunta;
+    console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
+    console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
   }
 }
 
@@ -288,12 +287,11 @@ function opcaoCorreta(){ //Validar opção correta
       (statusOpC == "marcado" && opC.innerHTML == opCorreta)){
       msg = "Resposta certa!";
       novaMensagem(msg); //Exibir mensagem em tela
-      pontuacao++;
+      pontuacao++; //Adiciona +1 na pontuação
       console.log(pontuacao + " pontos!");
   }else{
     msg = "Resposta errada.";
-    novaMensagem(msg); //Exibir mensagem em tela
-    
+    novaMensagem(msg); //Exibir mensagem em tela    
     //Opção A == "marcado" E Opção B == Correta >> A == vermelho e B == verde
     if(statusOpA == "marcado" && opB.innerHTML == opCorreta){
       opA.style.backgroundColor = "red";
@@ -322,7 +320,7 @@ function opcaoCorreta(){ //Validar opção correta
   }
 }
 
-function exibirResposta(img, explic){
+function exibirResposta(img, explic){ //Exibe a resposta da pergunta
   //Criando elemento "div" da caixa de resposta
   caixaResposta = document.createElement("div");
   caixaResposta.id = "caixa-resposta"; //Inserindo nome do id
@@ -348,23 +346,23 @@ function exibirResposta(img, explic){
 }
 
 // ###################### BOTÃO PROXIMA PERGUNTA ######################
-//OK 1 - Iniciar contador do numero quiz igual ao que está;
-//OK 2 - Adicionar +1 ao contador do número da pergunta;
+//1 - Iniciar contador do numero quiz igual ao que está;
+//2 - Adicionar +1 ao contador do número da pergunta;
 //3 - Ocultar o botão “proximo”;
 //4 - Mostrar o botão “responder”;
-//OK 5 - Excluir resposta;
+//5 - Excluir resposta;
 //6 - Limpar descrição dos botões;
 //7 - Exibir descrição da proxima pergunta;
-//7 - Limpar status das opções selecionadas (a, b ou c);
-//8 - Se clicar no botão "responder", faz todo processo do botão "responder" novamente
+//8 - Limpar status das opções selecionadas (a, b ou c);
+//9 - Se clicar no botão "responder", faz todo processo do botão "responder" novamente
 
-function btProximo(){ 
-  contPergunta++;  
-
-  if (contPergunta > conhecimentosGerais.length -1){
-    pontuacaoGeral();
-    resetarPerguntas();
-  }else{  
+function btProximo(){
+  contPergunta++; //Adiciona +1 ao contador de perguntas
+  //Se chegar na ultima pergunta
+  if (contPergunta > conhecimentosGerais.length -1){ //11 - 1 = 10
+    pontuacaoGeral();     //Exibe a pontuação geral
+    exibirBotaoResetar(); //Exibe o botão resetar
+  }else{ //Se não, continua na proxima pergunta
   idPergunta = document.getElementById("id-pergunta").innerHTML = conhecimentosGerais[contPergunta].numPergunta; //Número da pergunta 
   pergunta = document.getElementById("pergunta").innerHTML = conhecimentosGerais[contPergunta].pergunta; //Descrição da pergunta
   opA.innerHTML = conhecimentosGerais[contPergunta].opa; //Conteudo do objeto da opção A
@@ -383,32 +381,28 @@ function btProximo(){
   //Mudando a cor para azul novamente
   opA.style.backgroundColor = "blue";
   opB.style.backgroundColor = "blue";
-  opC.style.backgroundColor = "blue";
-  //Excluindo mensagem
-  caixaOpcoes.removeChild(novaMsg);
-  //Excluindo resposta
-  caixaQuiz.removeChild(caixaResposta);
-  //Ocultar botão "Proximo"
-  proximo.style.display = "none";
-  //Exibir botão "Responder"
-  responder.style.display = "block";  
-
-  console.log("ID QUIZ: " + conhecimentosGerais[0].numQuiz);
-  console.log("ID PERGUNTA: " + conhecimentosGerais[contPergunta].numPergunta);
+  opC.style.backgroundColor = "blue";  
+  if (caixaQuiz.contains(novaMsg)){       //Se existe mensagem, então:
+    caixaOpcoes.removeChild(novaMsg);     //Exclui mensagem    
+    caixaQuiz.removeChild(caixaResposta); //Exclui resposta
+  }  
+  proximo.style.display = "none"; //Ocultar botão "Proximo"  
+  responder.style.display = "block"; //Exibir botão "Responder"
   }
-
 }
 
 function pontuacaoGeral(){
   //Remover elementos da tela
   caixaOpcoes.removeChild(novaMsg);
-  caixaQuiz.removeChild(caixaPergunta);
-  caixaQuiz.removeChild(caixaOpcoes);
+  caixaPergunta.style.display = "none";
+  caixaOpcoes.style.display = "none";
+  //caixaQuiz.removeChild(caixaPergunta);
+  //caixaQuiz.removeChild(caixaOpcoes);
   caixaQuiz.removeChild(caixaResposta);
   //Criando elemento de pontuação na tela
   divPontuacao = document.createElement("div");
-  divPontuacao.id = "pontuacao";
   divPontuacao.className = "pontuacao";
+  divPontuacao.id = "pontuacao";  
   caixaQuiz.appendChild(divPontuacao);
   divPontuacao.insertAdjacentElement('afterend', caixaBotao);
   divPontuacao.innerHTML = "PARABÉNS!!<br>" +
@@ -417,18 +411,26 @@ function pontuacaoGeral(){
 }
 
 function btResetar(){
-
-
-  botaoResetar = document.createElement("div");
-  botaoResetar.id = "botao-resetar";
-  botaoResetar.className = "botao-resetar";
-  botaoResetar.onclick = btResetar();
-  caixaBotao.appendChild(botaoResetar);
-  caixaBotao.insertAdjacentElement('beforeend', botaoResetar);
+  contPergunta = -1; //Reiniciando o contador de perguntas
+  pontuacao = 0; //Reiniciand a pontuação geral
+  console.log("O contador de perguntas foi resetado");
+  caixaPergunta.style.display = "block"; //Ocultando pergunta da tela
+  caixaOpcoes.style.display = "block";   //Ocultando opções da tela
+  caixaQuiz.removeChild(divPontuacao);   //Removendo pontuação da tela
+  caixaBotao.removeChild(botaoResetar);  //Removendo botão resetar da tela
+  btProximo(); //Executa a função da proxima pergunta
 }
 
-function resetarPerguntas(){
-  contPergunta = -1;
-  btResetar()
-  btProximo();
+function exibirBotaoResetar(){  
+  //Criando o botão "Resetar"
+  botaoResetar = document.createElement("button");
+  botaoResetar.className = "botao-resetar";
+  botaoResetar.id = "botao-resetar";  
+  botaoResetar.innerHTML = "Resetar";
+  botaoResetar.onclick = btResetar;
+  caixaBotao.appendChild(botaoResetar);    
+  //Ocultar botão "Proximo"
+  proximo.style.display = "none";
+  //Ocultar botão "Responder"
+  responder.style.display = "none"; 
 }

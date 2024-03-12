@@ -5,3 +5,16 @@ h1{
     color: white;
 }
 
+h3{
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+}
+
+.home-caixa-principal{
+    background-color: blue;
+    display: flex;    
+    justify-content: center; /* Componentes da div ao centro */
+    margin: 0 auto;  
+    width: 50%;
+}

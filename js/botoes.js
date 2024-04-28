@@ -21,7 +21,7 @@ const conhecimentosGerais = [
     opb: "Estrela-dos-mares",
     opc: "Estrelas-do-mar",
     opcorreta: "Estrelas-do-mar",
-    imgResp: "/img/Pergunta_1.png",
+    imgResp: "./img/Pergunta_1.png",
     explicacao: "O plural de 'estrela-do-mar' é 'estrelas-do-mar'. Palavras unidas por preposição, apenas o primeiro elemento passa para o plural.",
   },
   {
@@ -32,7 +32,7 @@ const conhecimentosGerais = [
     opb: "350 anos",
     opc: "3.500 anos",
     opcorreta: "350 anos",
-    imgResp: "/img/Pergunta_2.png",
+    imgResp: "./img/Pergunta_2.png",
     explicacao: "1 século é 100 anos, meio século é 50 anos, portanto, 3 séculos e meio são, 350 anos.",
   },
   {
@@ -43,7 +43,7 @@ const conhecimentosGerais = [
     opb: "Mauna Kea, EUA",
     opc: "Atacama, Chile",
     opcorreta: "Atacama, Chile",
-    imgResp: "/img/Pergunta_3.png",
+    imgResp: "./img/Pergunta_3.png",
     explicacao: "Considerado o observatório mais poderoso do planeta, o 'Atacama Large Millimeter Array' (ALMA) foi instalado em 2013, para astrônomos observarem e estudarem as primeiras estrelas e galáxias que emergiram das 'idades das trevas' cósmicas há cerca de 13 bilhões de anos.",
   },
   {
@@ -54,7 +54,7 @@ const conhecimentosGerais = [
     opb: "Terremotos",
     opc: "Relâmpagos e trovões",
     opcorreta: "Relâmpagos e trovões",
-    imgResp: "/img/Pergunta_4.png",
+    imgResp: "./img/Pergunta_4.png",
     explicacao: "A astrofobia é o medo irracional, fóbico, de ver relâmpagos ou ouvir trovões que, segundo pesquisas recentes da Organização Mundial de Saúde (OMS), afeta, aproximadamente, 5% da população mundial.",
   },
   {
@@ -65,7 +65,7 @@ const conhecimentosGerais = [
     opb: "16",
     opc: "17",
     opcorreta: "17",
-    imgResp: "/img/Pergunta_5.png",
+    imgResp: "./img/Pergunta_5.png",
     explicacao: "Está retirando de 5 em 5 números. A sequência é 32, 27, 22 e 17.",
   },
   {
@@ -76,7 +76,7 @@ const conhecimentosGerais = [
     opb: "Carioca",
     opc: "Capixaba",
     opcorreta: "Fluminense",
-    imgResp: "/img/Pergunta_6.png",
+    imgResp: "./img/Pergunta_6.png",
     explicacao: "Quem nasce na cidade do Rio de Janeiro é chamado de 'carioca', e quem nasce no estado, incluindo a capital, atende pelo gentílico de 'fluminense'.",
   },
   {
@@ -87,7 +87,7 @@ const conhecimentosGerais = [
     opb: "5.000 metros",
     opc: "50.000 metros",
     opcorreta: "500 metros",
-    imgResp: "/img/Pergunta_7.png",
+    imgResp: "./img/Pergunta_7.png",
     explicacao: "Em 1 hm, temos 100 metros(m), então, em 5 hm, vamos ter 5 x 100, ou seja, 500 metros(m).",
   },
   {
@@ -98,7 +98,7 @@ const conhecimentosGerais = [
     opb: "O Azar",
     opc: "O Incomodo",
     opcorreta: "O perigo",
-    imgResp: "/img/Pergunta_8.png",
+    imgResp: "./img/Pergunta_8.png",
     explicacao: "A palavra 'hazard' em inglês, significa 'O perigo', 'arriscar' em português.",
   },
   {
@@ -109,7 +109,7 @@ const conhecimentosGerais = [
     opb: "Copázio",
     opc: "Copão",
     opcorreta: "Copázio",
-    imgResp: "/img/Pergunta_9.png",
+    imgResp: "./img/Pergunta_9.png",
     explicacao: "O aumentativo de 'copo' é 'copaço', 'copázio' ou 'coparrão'.",
   },
   {
@@ -120,7 +120,7 @@ const conhecimentosGerais = [
     opb: "Kangal",
     opc: "Rottweiler",
     opcorreta: "Kangal",
-    imgResp: "/img/Pergunta_10.png",
+    imgResp: "./img/Pergunta_10.png",
     explicacao: "O Kangal é gigante, pode atingir 81 cm de altura e pesar entre 50 e 60 kg. Ele é agressivo com outros cães, mas bastante carinhoso com os tutores, considerado patrimônio cultural na Turquia. É o cachorro que possui a mordida mais forte, ele possui o recorde de 743 PSI.",
   }
 ]
